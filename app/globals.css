@@ -1,3 +1,44 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* START: General styles */
+.max-width {
+	@apply max-w-[1440px] mx-auto;
+}
+
+.padding-x {
+	@apply sm:px-16 px-6;
+}
+
+.padding-y {
+	@apply py-4;
+}
+
+.flex-center {
+	@apply flex justify-center items-center;
+}
+.full-page-center {
+	@apply w-full h-screen flex items-center justify-center;
+}
+
+.flex-between {
+	@apply flex justify-between items-center;
+}
+
+.custom-btn {
+	@apply flex flex-row relative justify-center items-center py-3 px-6 outline-none;
+}
+/* END: General styles */
+
+/* START: Navbar styles */
+
+.toggleContainer {
+	@apply md:hidden absolute top-[70px] left-0 transition-all duration-500 ease-in flex flex-col items-center justify-center w-[80%]  h-screen bg-light_green border-t-2 gap-4;
+}
+
+.toggleContainerHidden {
+	@apply md:hidden absolute top-[70px] left-[-100%] transition-all duration-500 opacity-0 ease-in flex flex-col items-center justify-center w-[80%]  h-screen bg-blue-600 gap-4;
+}
+
+/* END: Navbar styles */
