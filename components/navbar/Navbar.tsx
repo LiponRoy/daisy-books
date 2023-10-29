@@ -18,7 +18,7 @@ const Navbar = () => {
 
     return (
         <>
-            <div className="fixed w-full flex-between py-2 px-6 bg-off_white">
+            <div className="w-full flex-between py-2 px-6 bg-off-white border-b border-light_green">
                 <Logo />
 
                 <div className="hidden md:flex justify-center items-center">
@@ -38,7 +38,7 @@ const Navbar = () => {
 
 
                 {/* mobile part */}
-                <div className="md:hidden cursor-pointer flex-center">
+                <div className="md:hidden cursor-pointer flex-center z-50">
 
                     <div className=" pr-4 text-light_green">
                         <BsFillCartDashFill size={24} />
