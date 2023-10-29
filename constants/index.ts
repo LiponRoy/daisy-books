@@ -6,9 +6,9 @@ export const navLink: InavLink[] = [
 		url: '/',
 		title: 'home',
 	},
-	{
-		id: 2,
-		url: '/login',
-		title: 'Login',
-	},
+	// {
+	// 	id: 2,
+	// 	url: '/login',
+	// 	title: 'Login',
+	// },
 ];
