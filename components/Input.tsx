@@ -20,7 +20,7 @@ const Input: React.FC<InputProps> = ({
     errors,
 }) => {
     return (
-        <div className="w-full relative m-1">
+        <div className="w-full relative">
             <label>{label}</label>
             <input
                 id={id}
