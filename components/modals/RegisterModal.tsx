@@ -6,6 +6,8 @@ import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import Input from '../Input';
 import { Heading } from '../heading/Heading';
 import CustomButton from '../CustomButton';
+import axios from 'axios';
+import { toast } from 'react-hot-toast';
 
 const RegisterModal = () => {
     const { isOpen, onClose } = useAuthModalStore();
@@ -25,6 +27,19 @@ const RegisterModal = () => {
 
     const onSubmit: SubmitHandler<FieldValues> = async (data) => {
         console.log(data)
+        axios
+            .post('/api/register', data)
+            .then(() => {
+                toast.success('Registered!');
+                onClose();
+            })
+            .catch((error) => {
+                toast.error(error);
+                console.log(error)
+            })
+            .finally(() => {
+                // setIsLoading(false);
+            });
 
     };
 
