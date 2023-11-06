@@ -34,7 +34,7 @@ const CustomButton: React.FC<IButton> = ({
         hover:opacity-80
         transition
         w-full
-        px-4
+        px-2 my-4
         ${outline ? 'bg-white' : ' bg-light_green'}
         ${outline ? 'border-light_green' : 'border-light_green'}
         ${outline ? 'text-black' : 'text-white'}

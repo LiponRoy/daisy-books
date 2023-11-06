@@ -20,19 +20,21 @@ const Input: React.FC<InputProps> = ({
     errors,
 }) => {
     return (
-        <div className="w-full relative">
-            <label>{label}</label>
-            <input
-                id={id}
-                disabled={disabled}
-                {...register(id, { required })}
-                placeholder=" "
-                type={type}
-                className={`
+        <>
+
+            <div className=' mx-2'>
+                <span className=' text-sm text-slate-500'>{label}</span>
+                <input
+                    id={id}
+                    disabled={disabled}
+                    {...register(id, { required })}
+                    placeholder=" "
+                    type={type}
+                    className={`
+          my-1
           w-full
           p-4
           font-light 
-          bg-white 
           border-2
           rounded-md
           outline-none
@@ -42,8 +44,9 @@ const Input: React.FC<InputProps> = ({
           ${errors[id] ? 'border-rose-500' : 'border-neutral-300'}
           ${errors[id] ? 'focus:border-rose-500' : 'focus:border-black'}
         `}
-            />
-        </div>
+                />
+            </div>
+        </>
     );
 };
 
