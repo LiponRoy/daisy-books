@@ -9,8 +9,15 @@ import { Logo } from '..';
 import useRegisterModalStore from '@/hooks/useRegisterModalStore';
 import CustomButton from '../CustomButton';
 import useLoginModalStore from '@/hooks/useLoginModalStore';
+import { SafeUser } from '@/types/ndex';
+import { signOut } from 'next-auth/react';
 
-const Navbar = () => {
+interface navbarProps {
+    currentUser?: SafeUser | null;
+  }
+
+const Navbar = ({currentUser}:navbarProps) => {
+
     const RegisterModalStore = useRegisterModalStore();
     const LoginModalStore = useLoginModalStore();
     
@@ -37,11 +44,15 @@ const Navbar = () => {
                     ))}
 
                     <div className=" gap-x-2">
-                        <CustomButton
+                        {currentUser?(<CustomButton
+                            label="LogOut"
+                            outline
+                            onClick={()=>signOut()}
+                        />):(<CustomButton
                             label="LOGIN"
                             outline
                             onClick={LoginModalStore.onOpen}
-                        />
+                        />)}
                     </div>
                 </div>
 
@@ -64,11 +75,19 @@ const Navbar = () => {
                                     </div>
                                 ))}
                                 <div className=" gap-x-2">
+                                   {
+                                    currentUser?( 
+                                    <CustomButton
+                                        label="LogOut"
+                                        // outline
+                                        onClick={()=>signOut()}
+                                    />):( 
                                     <CustomButton
                                         label="LOGIN"
                                         outline
                                         onClick={LoginModalStore.onOpen}
-                                    />
+                                    />)
+                                   }
                                 </div>
                             </div>
                         )}
