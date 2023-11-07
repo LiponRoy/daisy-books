@@ -30,7 +30,7 @@ const Navbar = ({currentUser}:navbarProps) => {
 
     return (
         <>
-            <div className="w-full flex-between py-2 px-6 bg-off-white border-b border-light_green">
+            <div className={`w-full flex-between py-2 px-6 bg-off-white ${currentUser && "border-b-2 border-light_green"}`}>
                 <Logo />
 
                 <div className="hidden md:flex justify-center items-center">
