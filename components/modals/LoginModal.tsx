@@ -5,21 +5,20 @@ import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import Input from '../Input';
 import { Heading } from '../heading/Heading';
 import CustomButton from '../CustomButton';
-import axios from 'axios';
 import { toast } from 'react-hot-toast';
-import useRegisterModalStore from '@/hooks/useRegisterModalStore';
 import useLoginModalStore from '@/hooks/useLoginModalStore';
+import useRegisterModalStore from '@/hooks/useRegisterModalStore';
+import { signIn } from 'next-auth/react';
 
-const RegisterModal = () => {
+const LoginModal = () => {
     const loginModalStore = useLoginModalStore();
     const registerModalStore = useRegisterModalStore();
     
 
 
-    const switchToLoginModal =()=>{
-        registerModalStore.onClose()
-        loginModalStore.onOpen();
-
+    const switchToRegisterModal =()=>{
+        loginModalStore.onClose();
+        registerModalStore.onOpen();
 
     }
     
@@ -31,39 +30,37 @@ const RegisterModal = () => {
         formState: { errors },
     } = useForm<FieldValues>({
         values: {
-            name: "",
             email: "",
             password: "",
         },
     });
 
-    const onSubmit: SubmitHandler<FieldValues> = async (data) => {
-        console.log(data)
-        axios
-            .post('/api/register', data)
-            .then(() => {
-                toast.success('Registered!');
-                registerModalStore.onClose();
-            })
-            .catch((error) => {
-                toast.error(error);
-                console.log(error)
-            })
-            .finally(() => {
-                // setIsLoading(false);
-            });
-
-    };
+    const onSubmit: SubmitHandler<FieldValues> = (data) => {
+        // setIsLoading(true);
+    
+        signIn("credentials", {
+          ...data,
+          redirect: false,
+        }).then((callback) => {
+        //   setIsLoading(false);
+    
+          if (callback?.ok) {
+            toast.success("Logged in");
+            // router.refresh();
+            loginModalStore.onClose();
+          }
+    
+          if (callback?.error) {
+            toast.error(callback.error);
+          }
+    
+    
+        });
+      };
 
     const body = <div className="container mx-auto p-4 max-w-md">
-        <Heading title='SignUp' />
+        <Heading title='Login' />
         <form onSubmit={handleSubmit(onSubmit)}>
-            <Input id="name"
-                label="name"
-                register={register}
-                errors={errors}
-                required
-                type="text" />
 
             <Input id="email"
                 label="email"
@@ -81,16 +78,16 @@ const RegisterModal = () => {
             <CustomButton label='SUBMIT' type='submit' />
         </form>
         <div className=" text-center text-slate-500">
-            <span>Already have an account? <span onClick={switchToLoginModal} className=' font-semibold cursor-pointer'>Login Now</span></span>
+            <span>Don't have an account? <span onClick={switchToRegisterModal} className=' font-semibold cursor-pointer'>Signup Now</span></span>
         </div>
 
     </div>
 
     return (
-        <Modal isModalOpen={registerModalStore.isOpen} onClose={registerModalStore.onClose}>
+        <Modal isModalOpen={ loginModalStore.isOpen} onClose={ loginModalStore.onClose}>
             {body}
         </Modal>
     )
 }
 
-export default RegisterModal
+export default LoginModal

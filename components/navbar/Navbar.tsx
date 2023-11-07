@@ -6,18 +6,20 @@ import { FiMenu } from 'react-icons/fi';
 import { BsFillCartDashFill } from 'react-icons/bs';
 import { ImCross } from 'react-icons/im';
 import { Logo } from '..';
-import useAuthModalStore from '@/hooks/useAuthModalStore';
+import useRegisterModalStore from '@/hooks/useRegisterModalStore';
 import CustomButton from '../CustomButton';
+import useLoginModalStore from '@/hooks/useLoginModalStore';
 
 const Navbar = () => {
-    const authModalStore = useAuthModalStore();
+    const RegisterModalStore = useRegisterModalStore();
+    const LoginModalStore = useLoginModalStore();
+    
     const [toggle, setToggle] = useState<boolean>(false);
 
     const toggleState = () => {
         setToggle(!toggle);
         console.log(toggle);
     };
-    console.log(authModalStore.isOpen);
 
     return (
         <>
@@ -38,7 +40,7 @@ const Navbar = () => {
                         <CustomButton
                             label="LOGIN"
                             outline
-                            onClick={authModalStore.onOpen}
+                            onClick={LoginModalStore.onOpen}
                         />
                     </div>
                 </div>
@@ -65,7 +67,7 @@ const Navbar = () => {
                                     <CustomButton
                                         label="LOGIN"
                                         outline
-                                        onClick={authModalStore.onOpen}
+                                        onClick={LoginModalStore.onOpen}
                                     />
                                 </div>
                             </div>
