@@ -21,7 +21,6 @@ export const GET = async (req: Request, res: NextResponse) => {
 	}
 };
 
-
 export const POST = async (req: Request, res: NextResponse) => {
 	try {
 		const {name,description,imageSrc }= await req.json();
