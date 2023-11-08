@@ -6,12 +6,12 @@ import Input from '../Input';
 import { Heading } from '../heading/Heading';
 import CustomButton from '../CustomButton';
 import { toast } from 'react-hot-toast';
-import { signIn } from 'next-auth/react';
 import usePostBookModalStore from '@/hooks/usePostBookModalStore';
-import axios from 'axios';
+import { useCreateBookMutation } from '@/redux/feature/bookApi';
 
 const PostBookModal = () => {
     const postBookModalStore = usePostBookModalStore();
+    const [createBook, { isLoading, isSuccess, isError }] = useCreateBookMutation();
 
     const {
         register,
@@ -26,24 +26,25 @@ const PostBookModal = () => {
         },
     });
 
-    const onSubmit: SubmitHandler<FieldValues> = (data) => {
-     
-        console.log(data)
-        axios
-        .post('/api/book', data)
-        .then(() => {
-            toast.success('Book Posted!');
-            postBookModalStore.onClose();
-        })
-        .catch((error) => {
-            toast.error(error);
-            console.log(error)
-        })
-        .finally(() => {
-            // setIsLoading(false);
-        });
+    const onSubmit: SubmitHandler<FieldValues> = async (data) => {
 
-      };
+        try {
+
+            await createBook(data)
+
+            setTimeout(() => {
+                postBookModalStore.onClose()
+                toast.success("Book Created")
+            }, 2000)
+
+
+        } catch (error) {
+
+        }
+
+
+
+    };
 
     const body = <div className="container mx-auto p-4 max-w-md">
         <Heading title='Create Book' />
@@ -61,7 +62,7 @@ const PostBookModal = () => {
                 errors={errors}
                 required
                 type="text" />
-                
+
             <Input id="imageSrc"
                 label="imageSrc"
                 register={register}
@@ -69,14 +70,14 @@ const PostBookModal = () => {
                 required
                 type="text" />
 
-            <CustomButton label='SUBMIT' type='submit' />
+            <CustomButton label={isLoading ? "Posting.." : 'SUBMIT'} type='submit' />
         </form>
-        
+
 
     </div>
 
     return (
-        <Modal isModalOpen={ postBookModalStore.isOpen} onClose={ postBookModalStore.onClose}>
+        <Modal isModalOpen={postBookModalStore.isOpen} onClose={postBookModalStore.onClose}>
             {body}
         </Modal>
     )
