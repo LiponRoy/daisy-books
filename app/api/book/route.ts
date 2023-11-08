@@ -12,7 +12,7 @@ export async function main() {
 
 export const GET = async (req: Request, res: NextResponse) => {
 	try {
-		const posts = await prisma.book.findMany()
+		const posts = await prisma.book.findMany();
 		return NextResponse.json(posts);
 	} catch (error) {
 		return NextResponse.json({ message: 'Error', error }, { status: 500 });
@@ -23,9 +23,11 @@ export const GET = async (req: Request, res: NextResponse) => {
 
 export const POST = async (req: Request, res: NextResponse) => {
 	try {
-		const {name,description,imageSrc }= await req.json();
+		const { name, description, imageSrc } = await req.json();
 		await main();
-		const posted = await prisma.book.create({ data: {name,description,imageSrc} });
+		const posted = await prisma.book.create({
+			data: { name, description, imageSrc },
+		});
 		return NextResponse.json(
 			{ message: 'Book has Posted Successfully', posted },
 			{ status: 200 }
