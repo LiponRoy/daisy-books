@@ -1,10 +1,11 @@
 import Hero from '@/components/Hero'
-import Image from 'next/image'
+import GetBooks from '@/components/getBooks/GetBooks'
 
 export default function Home() {
   return (
     <>
       <Hero />
+      <GetBooks />
     </>
 
 

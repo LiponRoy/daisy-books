@@ -12,8 +12,8 @@ const Hero = () => {
                     className='w-28 h-32 md:h-[95%] md:w-[70%] '
                     src='/girl.png'
                     alt='logo'
-                    width={800}
-                    height={800}
+                    width={400}
+                    height={400}
                 // style={{ objectFit: 'cover' }}
                 // fill
 
