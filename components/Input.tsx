@@ -27,13 +27,13 @@ const Input: React.FC<InputProps> = ({
                 <input
                     id={id}
                     disabled={disabled}
-                    {...register(id, { required })}
+                    {...register(id, id === "numberOfPages" ? ({ required, valueAsNumber: true }) : ({ required }))}
                     placeholder=" "
                     type={type}
                     className={`
-          my-1
+          my-[6px]
           w-full
-          p-4
+          p-[6px]
           font-light 
           border-2
           rounded-md
