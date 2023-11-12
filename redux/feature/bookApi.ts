@@ -2,7 +2,12 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 interface IBook {
 	id: string;
-	name: string;
+	title: string;
+	author: string;
+	category: string;
+	publicationDate: string;
+	numberOfPages: Number;
+	language: string;
 	description: string;
 	imageSrc: string;
 }
