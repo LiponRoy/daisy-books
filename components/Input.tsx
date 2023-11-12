@@ -33,7 +33,7 @@ const Input: React.FC<InputProps> = ({
                     className={`
           my-[6px]
           w-full
-          p-[6px]
+          p-[10px]
           font-light 
           border-2
           rounded-md
