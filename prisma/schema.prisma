@@ -24,7 +24,12 @@ model User {
 
 model Book {
   id   String @id @default(auto()) @map("_id") @db.ObjectId
-  name String
+  title String
+  author String
+  category String
+  publicationDate String
+  numberOfPages Int
+  language String
   description String
   imageSrc String
   createdAt DateTime @default(now())

@@ -11,10 +11,10 @@ interface ImodalProps {
 const Modal = ({ isModalOpen, onClose, children }: ImodalProps) => {
     return (
         isModalOpen && (
-            <div className=" fixed inset-0 bg-black/70 full-page-center z-50">
-                <div className="relative w-[80%] h-[70%]  md:w-[70%] lg:w-[30%]  flex-col-center bg-white rounded-md ">
+            <div className=" fixed inset-0 bg-black/70 full-page-center z-50 ">
+                <div className="relative w-[80%] h-[100%]  md:w-[70%] lg:w-[30%]  flex-col-center bg-white rounded-md">
                     {children}
-                    <span onClick={onClose} className=" absolute top-[5%] right-[5%] cursor-pointer text-slate-500">
+                    <span onClick={onClose} className=" absolute top-[2%] right-[8%] cursor-pointer text-slate-500">
                         <ImCross />
                     </span>
                 </div>

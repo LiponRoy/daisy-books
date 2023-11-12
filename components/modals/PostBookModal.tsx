@@ -19,18 +19,25 @@ const PostBookModal = () => {
         reset,
         formState: { errors },
     } = useForm<FieldValues>({
+
         values: {
-            name: "",
+            title: "",
+            author: "",
+            category: "",
+            publicationDate: "",
+            numberOfPages: 0,
+            language: "",
             description: "",
             imageSrc: ""
         },
     });
 
     const onSubmit: SubmitHandler<FieldValues> = async (data) => {
-
+        console.log("submitted data :", data)
         try {
 
             await createBook(data)
+
 
             setTimeout(() => {
                 postBookModalStore.onClose()
@@ -46,12 +53,42 @@ const PostBookModal = () => {
 
     };
 
-    const body = <div className="container mx-auto p-4 max-w-md">
+    const body = <div className="container mx-auto p-4 max-w-md  overflow-scroll">
         <Heading title='Create Book' />
         <form onSubmit={handleSubmit(onSubmit)}>
 
-            <Input id="name"
-                label="name"
+            <Input id="title"
+                label="title"
+                register={register}
+                errors={errors}
+                required
+                type="text" />
+            <Input id="author"
+                label="author"
+                register={register}
+                errors={errors}
+                required
+                type="text" />
+            <Input id="category"
+                label="category"
+                register={register}
+                errors={errors}
+                required
+                type="text" />
+            <Input id="publicationDate"
+                label="publicationDate"
+                register={register}
+                errors={errors}
+                required
+                type="date" />
+            <Input id="numberOfPages"
+                label="numberOfPages"
+                register={register}
+                errors={errors}
+                required
+                type="Number" />
+            <Input id="language"
+                label="language"
                 register={register}
                 errors={errors}
                 required

@@ -23,10 +23,28 @@ export const GET = async (req: Request, res: NextResponse) => {
 
 export const POST = async (req: Request, res: NextResponse) => {
 	try {
-		const { name, description, imageSrc } = await req.json();
+		const {
+			title,
+			author,
+			category,
+			publicationDate,
+			numberOfPages,
+			language,
+			description,
+			imageSrc,
+		} = await req.json();
 		await main();
 		const posted = await prisma.book.create({
-			data: { name, description, imageSrc },
+			data: {
+				title,
+				author,
+				category,
+				publicationDate,
+				numberOfPages,
+				language,
+				description,
+				imageSrc,
+			},
 		});
 		return NextResponse.json(
 			{ message: 'Book has Posted Successfully', posted },
