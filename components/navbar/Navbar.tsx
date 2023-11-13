@@ -30,9 +30,8 @@ const Navbar = ({ currentUser }: navbarProps) => {
   return (
     <>
       <div
-        className={`w-full flex-between py-2 px-6 bg-off-white ${
-          currentUser && "border-b-2 border-light_green"
-        }`}
+        className={`flex-between py-2 px-6 bg-off-white ${currentUser && "border-b-2 border-light_green"
+          }`}
       >
         <Logo />
 
@@ -61,7 +60,7 @@ const Navbar = ({ currentUser }: navbarProps) => {
                   label="LogOut"
                   onClick={() => signOut()}
                 />
-                
+
               </div>
             ) : (
               <div className=" mx-1">
@@ -86,9 +85,8 @@ const Navbar = ({ currentUser }: navbarProps) => {
 
             {toggle && (
               <div
-                className={`${
-                  toggle ? "toggleContainer" : "toggleContainerHidden"
-                }`}
+                className={`${toggle ? "toggleContainer" : "toggleContainerHidden"
+                  }`}
               >
                 {navLink.map((nav) => (
                   <div key={nav.id} className=" m-1 uppercase text-white">
@@ -98,7 +96,7 @@ const Navbar = ({ currentUser }: navbarProps) => {
                 <div className=" gap-x-2">
                   {currentUser ? (
                     <div className=" flex flex-col justify-center items-center gap-1">
-                      
+
                       <CustomButton
                         small
                         outline

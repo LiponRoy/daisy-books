@@ -4,7 +4,7 @@ import CustomButton from './CustomButton'
 
 const Hero = () => {
     return (
-        <div className='h-[50vh] md:h-[100vh] w-full flex flex-col md:flex-row justify-evenly items-center bg-off_white '>
+        <div className='container w-full flex flex-col md:flex-row justify-evenly items-center bg-off_white '>
 
 
             <div className="basis-1/2 h-full flex-center">
