@@ -1,5 +1,5 @@
 import React from "react";
-import { RiMenuSearchLine } from "react-icons/ri";
+import { IoMdSearch } from "react-icons/io";
 
 interface Isearch {
   value: string;
@@ -14,10 +14,10 @@ const Search = ({ value, onChange }: Isearch) => {
         placeholder="Search by name"
         value={value}
         onChange={onChange}
-        className=" w-full outline-none py-2 my-2 pl-2 border-2 border-light_green rounded-md"
+        className=" w-full outline-none py-2 pl-2 border-2 border-light_green rounded-md"
       />
       <div className=" text-light_green">
-        <RiMenuSearchLine size={42} />
+        {/* <IoMdSearch size={32} /> */}
       </div>
     </div>
   );
