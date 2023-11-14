@@ -3,14 +3,14 @@ import { create } from "zustand";
 import { devtools, persist } from "zustand/middleware";
 
 interface ISearchStore {
-    filteredProducts: IBook[];
+    filteredBook: IBook[];
     FILTER_BY_SEARCH: (dataAll: IBook[], searchItem: string) => void;
 }
 
 const useSearchFilter = create<ISearchStore>()(
     devtools(
         (set) => ({
-            filteredProducts: [],
+            filteredBook: [],
             FILTER_BY_SEARCH: (dataAll, searchItem) => {
                 const tempProducts = dataAll?.filter(
                     (item) =>
@@ -18,7 +18,7 @@ const useSearchFilter = create<ISearchStore>()(
                         item.author.toLowerCase().includes(searchItem.toLowerCase())
                 );
 
-                set({ filteredProducts: tempProducts });
+                set({ filteredBook: tempProducts });
             },
         }),
         { name: "SearchStore" }

@@ -1,16 +1,26 @@
 "use client";
 import { useGetBooksQuery } from "@/redux/feature/bookApi";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Search from "../search/Search";
+import useSearchFilter from "@/hooks/useSearchFilter";
+import GetBook from "./GetBook";
 
 const GetBooks = () => {
+  const { FILTER_BY_SEARCH, filteredBook } = useSearchFilter();
   const { data, isFetching, isLoading, isSuccess } = useGetBooksQuery();
-
 
   // for search item
   const [searchProduct, setSearchProduct] = useState("");
   console.log("searchProduct is :", searchProduct);
+
+  useEffect(() => {
+
+    data && FILTER_BY_SEARCH(data, searchProduct);
+
+  }, [searchProduct, data])
+
+
   return (
     <>
       {/* book wrapper */}
@@ -24,40 +34,19 @@ const GetBooks = () => {
 
         {/* main */}
         <div className=" col-span-3">
-          <div className=" py-3 flex justify-between items-center">
-            <div>left-Side</div>
+          <div className=" flex justify-between items-center my-2">
+            <div className="text-slate-700 text-md font-medium">left-Side</div>
+            <div className="">
+              {filteredBook.length === 0 ? <span className=" text-red-700">No Item Found</span> : <span className=" text-slate-700 text-md font-medium">{`${filteredBook.length}`}: Item Found</span>}
+            </div>
             <Search
               value={searchProduct}
               onChange={(e) => setSearchProduct(e.target.value)}
             />
           </div>
-          <div className=" grid grid-cols-1 md:grid-cols-4 gap-4">
-            {data?.map((val) => (
-              <div
-                key={val.id}
-                className="border-2 rounded shadow flex flex-col justify-center items-start"
-              >
-                {/* product Image */}
-                <div className=" relative  w-full ">
-                  <Image
-                    className="h-52 object-cover"
-                    src={val.imageSrc}
-                    width={400}
-                    height={400}
-                    alt="no img found"
-                  />
-                  <div className=" absolute inset-0 hover:bg-black/10 transition "></div>
-                </div>
-                {/*End product Image */}
-
-                {/*Product Containt */}
-                <div className=" pt-4 pb-3 px-4 flex flex-col justify-center items-start">
-                  <span className=" capitalize font-medium font-r text-lg">
-                    {val.title}
-                  </span>
-                  <span>{val.author}</span>
-                </div>
-              </div>
+          <div className={`${isLoading || filteredBook.length === 0 ? " h-screen w-full flex justify-center items-center" : " grid grid-cols-1 md:grid-cols-4 gap-4"}`}>
+            {isLoading ? <div className=" text-2xl font-medium">Loading...</div> : filteredBook && filteredBook.map((book) => (
+              <GetBook book={book} />
             ))}
           </div>
         </div>
