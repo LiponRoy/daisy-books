@@ -5,6 +5,7 @@ import React, { useEffect, useState } from "react";
 import Search from "../search/Search";
 import useSearchFilter from "@/hooks/useSearchFilter";
 import GetBook from "./GetBook";
+import BookFilter from "../allFilter/BookFilter";
 
 const GetBooks = () => {
   const { FILTER_BY_SEARCH, filteredBook } = useSearchFilter();
@@ -26,19 +27,18 @@ const GetBooks = () => {
       {/* book wrapper */}
       <div className="container grid grid-cols-4 gap-6 pt-4 pb-16">
         {/* sideBar */}
-        <div className=" col-span-1 px-4 bp-6 shadow rounded bg-slate-400 overflow-hidden">
-          <div className=" flex flex-col justify-center items-center">
-            <span>Side Bar</span>
-          </div>
+        <div className=" col-span-1 px-4 bp-6 shadow rounded  overflow-hidden">
+          <BookFilter/>
         </div>
 
         {/* main */}
         <div className=" col-span-3">
           <div className=" flex justify-between items-center my-2">
-            <div className="text-slate-700 text-md font-medium">left-Side</div>
+          {/* left-Side */}
             <div className="">
-              {filteredBook.length === 0 ? <span className=" text-red-700">No Item Found</span> : <span className=" text-slate-700 text-md font-medium">{`${filteredBook.length}`}: Item Found</span>}
+              {filteredBook.length === 0 ? <span className=" text-red-700">No Item Found</span> : <span className=" text-slate-500 text-md font-medium">{`${filteredBook.length}`}: Item Found</span>}
             </div>
+          {/* right-Side */}
             <Search
               value={searchProduct}
               onChange={(e) => setSearchProduct(e.target.value)}
