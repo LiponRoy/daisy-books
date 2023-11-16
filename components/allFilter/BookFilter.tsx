@@ -1,9 +1,30 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import CustomButton from "../CustomButton";
 import { MdPlayArrow } from "react-icons/md";
 import { bookFilter, bookSort } from "@/constants";
+import { useGetBooksQuery } from "@/redux/feature/bookApi";
+import useSearchFilter from "@/hooks/useSearchFilter";
 
 const BookFilter = () => {
+  const { data, isFetching, isLoading, isSuccess } = useGetBooksQuery();
+  const {FILTER_BY_CATEGORY}=useSearchFilter()
+
+    const allCategory= [...new Set(data?.map((prod) => prod.category)), 'All'];
+    const [category, setCategory] = useState('All');
+
+    const filterProduct = (cat:string) => {
+      setCategory(cat);
+      FILTER_BY_CATEGORY(data,cat)
+      
+    };
+
+    useEffect(() => {
+   
+    }, [data]);
+
+
+
+
   return (
     <div className="w-full pl-8 pt-4 gap-6">
       {/* Category Filter*/}
@@ -14,10 +35,11 @@ const BookFilter = () => {
           </span>
           <MdPlayArrow className="text-light_green" size={24} />
         </div>
-        <span className=" border-b-2  w-[100px] text-slate-500  ">All</span>
-        {bookFilter.map((item) => (
-          <div key={item.id} className=" flex flex-col text-slate-600 ">
-            <span className=" border-b-2  w-[100px] pt-1">{item.titles}</span>
+        {/* //item.titles === category ? */}
+        
+        {allCategory.map((item) => (
+          <div key={item} className=" flex flex-col text-slate-600 curs">
+            <span onClick={()=>filterProduct(item)} className={`border-b-2  w-[100px] pt-1${item === category ?" border-light_green":""}`}>{item}</span>
           </div>
         ))}
       </div>
