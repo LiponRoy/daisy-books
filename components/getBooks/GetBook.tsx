@@ -3,7 +3,7 @@ import React from "react";
 
 
 const GetBook = ({ book}) => {
-  const { price, title, author, imageSrc } = book;
+  const { price, title, author,category, imageSrc } = book;
 
   return (
     <>
@@ -34,6 +34,10 @@ const GetBook = ({ book}) => {
           <div className=" flex justify-center items-center gap-x-2">
             <span>Author:</span>
             <span className=" capitalize  font-r ">{author}</span>
+          </div>
+          <div className=" flex justify-center items-center gap-x-2">
+            <span>Category:</span>
+            <span className=" capitalize  font-r ">{category}</span>
           </div>
         </div>
       </div>
