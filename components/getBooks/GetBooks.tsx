@@ -46,7 +46,7 @@ const GetBooks = () => {
           </div>
           <div className={`${isLoading || filteredBook.length === 0 ? " h-screen w-full flex justify-center items-center" : " grid grid-cols-1 md:grid-cols-4 gap-4"}`}>
             {isLoading ? <div className=" text-2xl font-medium">Loading...</div> : filteredBook && filteredBook.map((book) => (
-              <GetBook book={book} />
+              <GetBook key={book.id} book={book} />
             ))}
           </div>
         </div>

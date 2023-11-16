@@ -23,6 +23,7 @@ const PostBookModal = () => {
     values: {
       title: "",
       author: "",
+      price: 0,
       category: "",
       publicationDate: "",
       numberOfPages: 0,
@@ -92,6 +93,14 @@ const PostBookModal = () => {
               errors={errors}
               required
               type="text"
+            />
+            <Input
+              id="price"
+              label="price"
+              register={register}
+              errors={errors}
+              required
+              type="Number"
             />
             <Input
               id="category"

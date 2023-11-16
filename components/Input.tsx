@@ -27,7 +27,7 @@ const Input: React.FC<InputProps> = ({
                 <input
                     id={id}
                     disabled={disabled}
-                    {...register(id, id === "numberOfPages" ? ({ required, valueAsNumber: true }) : ({ required }))}
+                    {...register(id, id === "numberOfPages" || id ==="price" ? ({ required, valueAsNumber: true }) : ({ required }))}
                     placeholder=" "
                     type={type}
                     className={`

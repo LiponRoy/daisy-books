@@ -26,6 +26,7 @@ model Book {
   id   String @id @default(auto()) @map("_id") @db.ObjectId
   title String
   author String
+  price Int
   category String
   publicationDate String
   numberOfPages Int
@@ -34,3 +35,5 @@ model Book {
   imageSrc String
   createdAt DateTime @default(now())
 }
+
+
