@@ -26,6 +26,7 @@ export const POST = async (req: Request, res: NextResponse) => {
 		const {
 			title,
 			author,
+			price,
 			category,
 			publicationDate,
 			numberOfPages,
@@ -38,6 +39,7 @@ export const POST = async (req: Request, res: NextResponse) => {
 			data: {
 				title,
 				author,
+				price,
 				category,
 				publicationDate,
 				numberOfPages,

@@ -20,6 +20,7 @@ export interface IBook {
 	id: string;
 	title: string;
 	author: string;
+	price: Number;
 	category: string;
 	publicationDate: string;
 	numberOfPages: Number;
