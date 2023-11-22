@@ -8,6 +8,7 @@ import LoginModal from '@/components/modals/LoginModal';
 import getCurrentUser from './actions/getCurrentUser';
 import PostBookModal from '@/components/modals/PostBookModal';
 import ReduxProvider from '@/provider/ReduxProvider';
+import BookDetailModal from '@/components/modals/BookDetailModal';
 
 const inter = Inter({ subsets: ['latin'] })
 const roboto = Roboto({ subsets: ['latin'], weight: ["100", '300', '400', '500'] })
@@ -32,6 +33,7 @@ export default async function RootLayout({
           <RegisterModal />
           <LoginModal />
           <PostBookModal />
+          <BookDetailModal/>
           <Navbar currentUser={currentUser} />
           <Toaster />
           {children}

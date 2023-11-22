@@ -1,13 +1,27 @@
+"use client"
 import Image from "next/image";
 import React from "react";
+import CustomButton from "../CustomButton";
+import useBookDetailStore from "@/hooks/useBookDetailStore";
 
 
 const GetBook = ({ book}) => {
-  const { price, title, author,category, imageSrc } = book;
+  const BookDetailStore = useBookDetailStore();
+  const { id,price, title, author,category, imageSrc } = book;
+
+console.log("get book",BookDetailStore.isOpen)
+  const sendIdToStore = (id:string) => {
+    useBookDetailStore.setState((state)=>({
+      bookId:id
+    }))
+
+    BookDetailStore.onOpen();
+
+  }
 
   return (
     <>
-      <div className="border-2 rounded shadow flex flex-col justify-center items-start">
+      <div className="border-2 rounded shadow flex flex-col justify-center items-start px-1">
         {/* product Image */}
         <div className=" relative  w-full ">
           <Image
@@ -40,6 +54,9 @@ const GetBook = ({ book}) => {
             <span className=" capitalize  font-r ">{category}</span>
           </div>
         </div>
+       
+        <CustomButton onClick={()=>sendIdToStore(id)} label="Detail" outline/>
+        
       </div>
     </>
   );

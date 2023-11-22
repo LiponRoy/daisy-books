@@ -17,6 +17,7 @@ interface navbarProps {
 }
 
 const Navbar = ({ currentUser }: navbarProps) => {
+
   const LoginModalStore = useLoginModalStore();
   const postBookModalStore = usePostBookModalStore();
 
