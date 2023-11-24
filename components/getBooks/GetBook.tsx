@@ -3,19 +3,22 @@ import Image from "next/image";
 import React from "react";
 import CustomButton from "../CustomButton";
 import useBookDetailStore from "@/hooks/useBookDetailStore";
+import { useRouter } from "next/navigation";
+import { IBook } from "@/types/ndex";
 
 
-const GetBook = ({ book}) => {
+const GetBook = ({ book }) => {
   const BookDetailStore = useBookDetailStore();
-  const { id,price, title, author,category, imageSrc } = book;
+  const router = useRouter();
+  const { id, price, title, author, category, imageSrc } = book;
 
-console.log("get book",BookDetailStore.isOpen)
-  const sendIdToStore = (id:string) => {
-    useBookDetailStore.setState((state)=>({
-      bookId:id
+  const sendIdToStore = (id: string) => {
+    useBookDetailStore.setState((state) => ({
+      bookId: id
     }))
 
-    BookDetailStore.onOpen();
+    // BookDetailStore.onOpen();
+    router.push(`/bookdetail/${id}`)
 
   }
 
@@ -54,9 +57,9 @@ console.log("get book",BookDetailStore.isOpen)
             <span className=" capitalize  font-r ">{category}</span>
           </div>
         </div>
-       
-        <CustomButton onClick={()=>sendIdToStore(id)} label="Detail" outline/>
-        
+
+        <CustomButton onClick={() => sendIdToStore(id)} label="Detail" outline />
+
       </div>
     </>
   );
