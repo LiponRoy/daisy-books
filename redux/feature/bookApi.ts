@@ -14,8 +14,8 @@ export const bookApi = createApi({
 			transformResponse: (res: any) => res.reverse(),
 			providesTags: ['book_tag'],
 		}),
-		bookDetail: builder.query<IBook, void>({
-			query: (_id) =>`/api/book/${_id}`,
+		bookDetail: builder.query<IBook, string>({
+			query: (_id) => `/api/book/${_id}`,
 			providesTags: ['book_tag'],
 		}),
 		createBook: builder.mutation({
@@ -30,4 +30,5 @@ export const bookApi = createApi({
 });
 
 // Export hooks for usage in components
-export const { useGetBooksQuery, useCreateBookMutation,useBookDetailQuery } = bookApi;
+export const { useGetBooksQuery, useCreateBookMutation, useBookDetailQuery } =
+	bookApi;

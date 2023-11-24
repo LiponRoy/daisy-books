@@ -8,13 +8,13 @@ interface BookDetailStore {
 
 }
 
-const useBookDetailStore = create<BookDetailStore>()(devtools((set) => ({
+const useBookDetailStore = create<BookDetailStore>()(devtools(persist((set) => ({
     bookId: "",
     isOpen: false,
     onOpen: () => set({ isOpen: true }),
     onClose: () => set({ isOpen: false }),
 
-}), { name: "LoginModalStore" }));
+}), { name: "LoginModalStore" })));
 
 
 

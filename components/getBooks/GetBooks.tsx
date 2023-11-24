@@ -13,7 +13,6 @@ const GetBooks = () => {
 
   // for search item
   const [searchProduct, setSearchProduct] = useState("");
-  console.log("searchProduct is :", searchProduct);
 
   useEffect(() => {
 
@@ -28,17 +27,17 @@ const GetBooks = () => {
       <div className="container grid grid-cols-4 gap-6 pt-4 pb-16">
         {/* sideBar */}
         <div className=" col-span-1 px-4 bp-6 shadow rounded  overflow-hidden">
-          <BookFilter/>
+          <BookFilter />
         </div>
 
         {/* main */}
         <div className=" col-span-3">
           <div className=" flex justify-between items-center my-2">
-          {/* left-Side */}
+            {/* left-Side */}
             <div className="">
               {filteredBook.length === 0 ? <span className=" text-red-700">No Item Found</span> : <span className=" text-slate-500 text-md font-medium">{`${filteredBook.length}`}: Item Found</span>}
             </div>
-          {/* right-Side */}
+            {/* right-Side */}
             <Search
               value={searchProduct}
               onChange={(e) => setSearchProduct(e.target.value)}

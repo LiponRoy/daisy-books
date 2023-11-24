@@ -9,10 +9,12 @@ import getCurrentUser from './actions/getCurrentUser';
 import PostBookModal from '@/components/modals/PostBookModal';
 import ReduxProvider from '@/provider/ReduxProvider';
 import BookDetailModal from '@/components/modals/BookDetailModal';
+import ClientOnly from '@/components/ClientOnly';
 
 const inter = Inter({ subsets: ['latin'] })
 const roboto = Roboto({ subsets: ['latin'], weight: ["100", '300', '400', '500'] })
 export const lobster = Lobster({ subsets: ['latin'], weight: ['400'] })
+
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -29,13 +31,15 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className={roboto.className}>
-        <ReduxProvider>
-          <RegisterModal />
-          <LoginModal />
-          <PostBookModal />
-          <BookDetailModal/>
-          <Navbar currentUser={currentUser} />
-          <Toaster />
+        <ReduxProvider>,
+          <ClientOnly>
+            <RegisterModal />
+            <LoginModal />
+            <PostBookModal />
+            <BookDetailModal />
+            <Navbar currentUser={currentUser} />
+            <Toaster />
+          </ClientOnly>
           {children}
         </ReduxProvider>
       </body>
