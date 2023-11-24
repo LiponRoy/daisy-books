@@ -4,11 +4,8 @@ import React from "react";
 import CustomButton from "../CustomButton";
 import useBookDetailStore from "@/hooks/useBookDetailStore";
 import { useRouter } from "next/navigation";
-import { IBook } from "@/types/ndex";
-
 
 const GetBook = ({ book }) => {
-  const BookDetailStore = useBookDetailStore();
   const router = useRouter();
   const { id, price, title, author, category, imageSrc } = book;
 
@@ -17,7 +14,6 @@ const GetBook = ({ book }) => {
       bookId: id
     }))
 
-    // BookDetailStore.onOpen();
     router.push(`/bookdetail/${id}`)
 
   }
