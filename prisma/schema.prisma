@@ -33,6 +33,8 @@ model Book {
   language String
   description String
   imageSrc String
+  cartQuantity Int @default(1)
+
   createdAt DateTime @default(now())
 }
 
