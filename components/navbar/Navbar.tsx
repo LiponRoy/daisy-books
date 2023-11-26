@@ -11,12 +11,14 @@ import useLoginModalStore from "@/hooks/useLoginModalStore";
 import { SafeUser } from "@/types/ndex";
 import { signOut } from "next-auth/react";
 import usePostBookModalStore from "@/hooks/usePostBookModalStore";
+import { useRouter } from "next/navigation";
 
 interface navbarProps {
   currentUser?: SafeUser | null;
 }
 
 const Navbar = ({ currentUser }: navbarProps) => {
+  const router = useRouter()
 
   const LoginModalStore = useLoginModalStore();
   const postBookModalStore = usePostBookModalStore();
@@ -37,7 +39,7 @@ const Navbar = ({ currentUser }: navbarProps) => {
         <Logo />
 
         <div className="hidden md:flex justify-center items-center">
-          <div className=" pr-4 text-light_green">
+          <div onClick={()=>router.push("/cart_detail")}  className=" pr-4 text-light_green cursor-pointer">
             <BsFillCartDashFill size={24} />
           </div>
           {navLink.map((nav) => (

@@ -13,7 +13,7 @@ const BookDetailModal = () => {
   const body = <div className=" flex flex-col justify-center items-center">
     {isFetching && <div>loading....</div>}
     {isSuccess && <div>
-      <span>{data.author}</span>
+      <span>{data?.author}</span>
 
     </div>}
 
@@ -22,7 +22,7 @@ const BookDetailModal = () => {
 
   return (
     <Modal isModalOpen={BookDetailStore.isOpen} onClose={BookDetailStore.onClose}>
-      {body}
+      {data && body}
     </Modal>
   )
 }
