@@ -27,4 +27,5 @@ export interface IBook {
 	language: string;
 	description: string;
 	imageSrc: string;
+	cartQuantity:number;
 }
