@@ -7,6 +7,7 @@ interface ISearchStore {
 	totalQuantity: number;
 	totalPrice: number;
 addItemToCart:(newItem: IBook[])=>void;
+removeItemFromCart:(newItem: IBook[])=>void;
 }
 
 const useCartStore = create<ISearchStore>()(
@@ -30,6 +31,17 @@ const useCartStore = create<ISearchStore>()(
                 return {
                     ...state,
                     cartProducts: newCart
+                }
+            })
+        },
+        removeItemFromCart: (removeItem) => {
+            const { id} = removeItem;
+          
+            set((state) => {
+                const newItem =state.cartProducts.filter((item)=>item.id!==id);
+                return {
+                    ...state,
+                    cartProducts: newItem
                 }
             })
         },
