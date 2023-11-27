@@ -31,6 +31,8 @@ const PostBookModal = () => {
       language: "",
       description: "",
       imageSrc: "",
+      cartQuantity: 1,
+
     },
   });
 
@@ -140,8 +142,8 @@ const PostBookModal = () => {
               required
               type="Number"
             />
-           {/* Language */}
-           <div className="w-[95%]  mx-auto mt-1">
+            {/* Language */}
+            <div className="w-[95%]  mx-auto mt-1">
               <label className="block  ml-1  text-sm text-slate-500 dark:text-white">
                 Select Language
               </label>
@@ -153,7 +155,7 @@ const PostBookModal = () => {
                 <option selected >Choose please</option>
                 <option value="english">English</option>
                 <option value="bangla">Bangla</option>
-                
+
               </select>
             </div>
             {/* End Language */}
@@ -164,7 +166,7 @@ const PostBookModal = () => {
               errors={errors}
               required
               type="file"
-              
+
             />
           </div>
         </div>

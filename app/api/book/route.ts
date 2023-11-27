@@ -33,6 +33,7 @@ export const POST = async (req: Request, res: NextResponse) => {
 			language,
 			description,
 			imageSrc,
+			cartQuantity,
 		} = await req.json();
 		await main();
 		const posted = await prisma.book.create({
@@ -46,6 +47,7 @@ export const POST = async (req: Request, res: NextResponse) => {
 				language,
 				description,
 				imageSrc,
+				cartQuantity,
 			},
 		});
 		return NextResponse.json(
