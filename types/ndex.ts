@@ -20,12 +20,12 @@ export interface IBook {
 	id: string;
 	title: string;
 	author: string;
-	price: Number;
+	price: number;
 	category: string;
 	publicationDate: string;
-	numberOfPages: Number;
+	numberOfPages: number;
 	language: string;
 	description: string;
 	imageSrc: string;
-	cartQuantity:number;
+	cartQuantity: number;
 }

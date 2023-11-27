@@ -4,51 +4,51 @@ import { devtools, persist } from "zustand/middleware";
 
 interface ISearchStore {
     cartProducts: IBook[];
-	totalQuantity: number;
-	totalPrice: number;
-addItemToCart:(newItem: IBook[])=>void;
-removeItemFromCart:(newItem: IBook[])=>void;
+    totalQuantity: number;
+    totalPrice: number;
+    addItemToCart: (newItem: IBook[]) => void;
+    removeItemFromCart: (newItem: IBook[]) => void;
 }
 
 const useCartStore = create<ISearchStore>()(
-  devtools(persist(
-    (set) => ({
-        cartProducts: [],
-        totalQuantity: 0,
-        totalPrice: 0,
-        addItemToCart: (newItem) => {
-            const { id} = newItem;
-            let newCart:any[]=[];
-            set((state) => {
-                const itemFound =state.cartProducts.findIndex((item)=>item.id===id);
+    devtools(persist(
+        (set) => ({
+            cartProducts: [],
+            totalQuantity: 0,
+            totalPrice: 0,
+            addItemToCart: (newItem) => {
+                const { id } = newItem;
+                let newCart: any[] = [];
+                set((state) => {
+                    const itemFound = state.cartProducts.findIndex((item) => item.id === id);
 
-                if(itemFound>=0){
-                    state.cartProducts[itemFound].cartQuantity+=1;
+                    if (itemFound >= 0) {
+                        state.cartProducts[itemFound].cartQuantity += 1;
 
-                }else{
-                    newCart= [...state.cartProducts, newItem]
-                }
-                return {
-                    ...state,
-                    cartProducts: newCart
-                }
-            })
-        },
-        removeItemFromCart: (removeItem) => {
-            const { id} = removeItem;
-          
-            set((state) => {
-                const newItem =state.cartProducts.filter((item)=>item.id!==id);
-                return {
-                    ...state,
-                    cartProducts: newItem
-                }
-            })
-        },
-       
-    }),
-    { name: "CartStore" }
-  ),{ name: 'CartStore',getStorage: () => localStorage })
+                    } else {
+                        newCart = [...state.cartProducts, newItem]
+                    }
+                    return {
+                        ...state,
+                        cartProducts: newCart
+                    }
+                })
+            },
+            removeItemFromCart: (removeItem) => {
+                const { id } = removeItem;
+
+                set((state) => {
+                    const newItem = state.cartProducts.filter((item) => item.id !== id);
+                    return {
+                        ...state,
+                        cartProducts: newItem
+                    }
+                })
+            },
+
+        }),
+        { name: "CartStore" }
+    ), { name: 'CartStore', getStorage: () => localStorage })
 );
 
 export default useCartStore;

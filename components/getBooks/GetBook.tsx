@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 import useCartStore from "@/hooks/useCartStore";
 
 const GetBook = ({ book }) => {
-  const{ addItemToCart,cartProducts } = useCartStore();
+  const { addItemToCart, cartProducts } = useCartStore();
   const router = useRouter();
   const { id, price, title, author, category, imageSrc } = book;
 
@@ -20,12 +20,12 @@ const GetBook = ({ book }) => {
 
   }
 
-  useEffect(()=>{
+  useEffect(() => {
     console.log(cartProducts)
-  },[cartProducts])
+  }, [cartProducts])
 
   // adding Item to cart
-  const addToCart =()=>{
+  const addToCart = () => {
     addItemToCart(book)
   }
 
@@ -33,7 +33,7 @@ const GetBook = ({ book }) => {
     <>
       <div className="border-2 rounded shadow flex flex-col justify-center items-start px-1">
         {/* product Image */}
-        <div className=" relative  w-full ">
+        <div onClick={() => sendIdToStore(id)} className=" relative  w-full cursor-pointer">
           <Image
             className="h-44 object-cover"
             src={imageSrc}
@@ -55,12 +55,12 @@ const GetBook = ({ book }) => {
             <span>Title:</span>
             <span className=" capitalize  font-r ">{title}</span>
           </div>
-          
+
         </div>
 
         <div className=" w-full flex justify-center items-center gap-x-1">
-        <CustomButton onClick={() => sendIdToStore(id)} label="Detail" outline />
-        <CustomButton onClick={addToCart} label="Add Cart" outline />
+
+          <CustomButton onClick={addToCart} label="Add Cart" outline />
         </div>
 
       </div>
