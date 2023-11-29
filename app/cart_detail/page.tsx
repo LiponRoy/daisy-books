@@ -34,7 +34,7 @@ const page = () => {
 
                 <div className="flex flex-col justify-center items-start">
                 <span>{item.title}</span>
-                <span>{item.author}</span>
+                <span>{item.cartQuantity}</span>
          
 
                 
