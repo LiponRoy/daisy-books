@@ -2,25 +2,25 @@ import { IBook } from "@/types/ndex";
 import { create } from "zustand";
 import { devtools, persist } from "zustand/middleware";
 
-interface ISearchStore {
+interface ICartStore {
     cartProducts: IBook[];
     totalQuantity: number;
     totalPrice: number;
-    addItemToCart: (newItem: IBook[]) => void;
-    removeItemFromCart: (newItem: IBook[]) => void;
+    addItemToCart: (newItem: IBook) => void;
+    removeItemFromCart: (newItem: IBook) => void;
 }
 
-const useCartStore = create<ISearchStore>()(
+const useCartStore = create<ICartStore>()(
     devtools(persist(
         (set) => ({
             cartProducts: [],
             totalQuantity: 0,
             totalPrice: 0,
             addItemToCart: (newItem) => {
-                const { id } = newItem;
-                let newCart: any[] = [];
+                
+                let newCart: IBook[];
                 set((state) => {
-                    const itemFound = state.cartProducts.findIndex((item) => item.id === id);
+                    let itemFound = state.cartProducts.findIndex((item) => item.id === newItem.id);
 
                     if (itemFound >= 0) {
                         state.cartProducts[itemFound].cartQuantity += 1;
