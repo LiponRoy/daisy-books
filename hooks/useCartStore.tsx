@@ -17,22 +17,31 @@ const useCartStore = create<ICartStore>()(
             totalQuantity: 0,
             totalPrice: 0,
             addItemToCart: (newItem) => {
-                
-                let newCart: IBook[];
                 set((state) => {
-                    let itemFound = state.cartProducts.findIndex((item) => item.id === newItem.id);
+                    const itemIndex = state.cartProducts.findIndex(
+                        (item) => item.id === newItem.id
+                    );
 
-                    if (itemFound >= 0) {
-                        state.cartProducts[itemFound].cartQuantity += 1;
+                    if (itemIndex >= 0) {
+                        const updatedCart = [...state.cartProducts];
+                        const updatedItem = { ...updatedCart[itemIndex] };
+                        updatedItem.cartQuantity += 1;
+                        updatedCart[itemIndex] = updatedItem;
 
+                        return {
+                            ...state,
+                            cartProducts: updatedCart,
+                        };
                     } else {
-                        newCart = [...state.cartProducts, newItem]
+                        return {
+                            ...state,
+                            cartProducts: [
+                                ...state.cartProducts,
+                                { ...newItem, cartQuantity: 1 },
+                            ],
+                        };
                     }
-                    return {
-                        ...state,
-                        cartProducts: newCart
-                    }
-                })
+                });
             },
             removeItemFromCart: (removeItem) => {
                 const { id } = removeItem;

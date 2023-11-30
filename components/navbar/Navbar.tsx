@@ -12,6 +12,7 @@ import { SafeUser } from "@/types/ndex";
 import { signOut } from "next-auth/react";
 import usePostBookModalStore from "@/hooks/usePostBookModalStore";
 import { useRouter } from "next/navigation";
+import useCartStore from "@/hooks/useCartStore";
 
 interface navbarProps {
   currentUser?: SafeUser | null;
@@ -19,6 +20,7 @@ interface navbarProps {
 
 const Navbar = ({ currentUser }: navbarProps) => {
   const router = useRouter()
+  const { cartProducts } = useCartStore();
 
   const LoginModalStore = useLoginModalStore();
   const postBookModalStore = usePostBookModalStore();
@@ -39,8 +41,11 @@ const Navbar = ({ currentUser }: navbarProps) => {
         <Logo />
 
         <div className="hidden md:flex justify-center items-center">
-          <div onClick={()=>router.push("/cart_detail")}  className=" pr-4 text-light_green cursor-pointer">
-            <BsFillCartDashFill size={24} />
+          <div onClick={() => router.push("/cart_detail")} className=" pr-4 text-light_green cursor-pointer">
+            <div className="flex justify-center items-center gap-x-1">
+              <span>{cartProducts.length}</span>
+              <BsFillCartDashFill size={24} />
+            </div>
           </div>
           {navLink.map((nav) => (
             <div key={nav.id} className=" m-1 uppercase">
