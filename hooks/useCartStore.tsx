@@ -7,6 +7,8 @@ interface ICartStore {
     totalQuantity: number;
     totalPrice: number;
     addItemToCart: (newItem: IBook) => void;
+    incrementCart: (newItem: IBook) => void;
+    decrementCart: (newItem: IBook) => void;
     removeItemFromCart: (newItem: IBook) => void;
 }
 
@@ -41,6 +43,47 @@ const useCartStore = create<ICartStore>()(
                             ],
                         };
                     }
+                });
+            },
+            incrementCart: (newItem) => {
+                set((state) => {
+                    const itemIndex = state.cartProducts.findIndex(
+                        (item) => item.id === newItem.id
+                    );
+
+                    const updatedCart = [...state.cartProducts];
+                    const updatedItem = { ...updatedCart[itemIndex] };
+                    if (updatedItem.cartQuantity >= 1) {
+                        updatedItem.cartQuantity += 1;
+                    }
+                    updatedCart[itemIndex] = updatedItem;
+
+                    return {
+                        ...state,
+                        cartProducts: updatedCart,
+                    };
+
+                });
+            },
+            decrementCart: (newItem) => {
+                set((state) => {
+                    const itemIndex = state.cartProducts.findIndex(
+                        (item) => item.id === newItem.id
+                    );
+
+                    const updatedCart = [...state.cartProducts];
+                    const updatedItem = { ...updatedCart[itemIndex] };
+
+                    if (updatedItem.cartQuantity > 1) {
+                        updatedItem.cartQuantity -= 1;
+                    }
+                    updatedCart[itemIndex] = updatedItem;
+
+                    return {
+                        ...state,
+                        cartProducts: updatedCart,
+                    };
+
                 });
             },
             removeItemFromCart: (removeItem) => {
