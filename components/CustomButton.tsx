@@ -37,7 +37,7 @@ const CustomButton: React.FC<IButton> = ({
         px-2 my-4
         ${outline ? 'bg-white' : ' bg-light_green'}
         ${outline ? 'border-light_green' : 'border-light_green'}
-        ${outline ? 'text-black' : 'text-white'}
+        ${outline ? 'text-slate-700 text-base' : 'text-white'}
         ${small ? 'text-sm' : 'text-md'}
         ${small ? 'py-1' : 'py-3'}
         ${small ? 'font-light' : 'font-semibold'}
