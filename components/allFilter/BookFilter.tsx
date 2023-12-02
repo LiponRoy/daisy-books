@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from "react";
-import CustomButton from "../CustomButton";
-import { MdPlayArrow } from "react-icons/md";
-import { bookFilter, bookSort } from "@/constants";
-import { useGetBooksQuery } from "@/redux/feature/bookApi";
-import useSearchFilter from "@/hooks/useSearchFilter";
+import React, { useEffect, useState } from 'react';
+import CustomButton from '../CustomButton';
+import { MdPlayArrow } from 'react-icons/md';
+import { bookFilter, bookSort } from '@/constants';
+import { useGetBooksQuery } from '@/redux/feature/bookApi';
+import useSearchFilter from '@/hooks/useSearchFilter';
 
 const BookFilter = () => {
   const { data, isFetching, isLoading, isSuccess } = useGetBooksQuery();
-  const { FILTER_BY_CATEGORY, SORT_PRODUCT } = useSearchFilter()
+  const { FILTER_BY_CATEGORY, SORT_PRODUCT } = useSearchFilter();
 
   const allCategory = [...new Set(data?.map((prod) => prod.category)), 'All'];
   const [category, setCategory] = useState('All');
@@ -15,21 +15,19 @@ const BookFilter = () => {
 
   const filterProduct = (cat: string) => {
     setCategory(cat);
-    FILTER_BY_CATEGORY(data, cat)
-
+    FILTER_BY_CATEGORY(data, cat);
   };
 
-  useEffect(() => {
-
-  }, [data]);
+  useEffect(() => { }, [data]);
 
   useEffect(() => {
-    SORT_PRODUCT(data, sort)
-
+    SORT_PRODUCT(data, sort);
   }, [sort]);
 
-
-
+  const clearFilter = () => {
+    setCategory("All");
+    setSort("letest")
+  }
 
   return (
     <div className="w-full pl-8 pt-4 gap-6">
@@ -44,8 +42,17 @@ const BookFilter = () => {
         {/* //item.titles === category ? */}
 
         {allCategory.map((item) => (
-          <div key={item} className=" flex flex-col text-slate-600 cursor-pointer ">
-            <span onClick={() => filterProduct(item)} className={`border-b-2  w-[100px] pt-1${item === category ? " border-light_green" : ""}`}>{item}</span>
+          <div
+            key={item}
+            className=" flex flex-col text-slate-600 cursor-pointer "
+          >
+            <span
+              onClick={() => filterProduct(item)}
+              className={`border-b-2  w-[100px] pt-1${item === category ? ' border-light_green' : ''
+                }`}
+            >
+              {item}
+            </span>
           </div>
         ))}
       </div>
@@ -61,16 +68,14 @@ const BookFilter = () => {
         </div>
 
         <select
-          value={sort} onChange={(e) => setSort(e.target.value)}
+          value={sort}
+          onChange={(e) => setSort(e.target.value)}
           name="sort-by"
           className=" rounded bg-white border-b-2 text-slate-600 cursor-pointer"
         >
-
-          {
-            bookSort.map((item) => (
-              <option key={item.id} >{item.titles}</option>
-            ))
-          }
+          {bookSort.map((item) => (
+            <option key={item.id}>{item.titles}</option>
+          ))}
         </select>
       </div>
       {/* End Sort By*/}
@@ -96,7 +101,7 @@ const BookFilter = () => {
 
       {/* Clear Filter Button */}
       <div className=" w-1/2">
-        <CustomButton label="Clear Filter" />
+        <CustomButton onClick={clearFilter} label="Clear Filter" />
       </div>
       {/*End  Clear Filter Button */}
     </div>
