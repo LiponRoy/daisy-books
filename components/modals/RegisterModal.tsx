@@ -13,16 +13,12 @@ import useLoginModalStore from '@/hooks/useLoginModalStore';
 const RegisterModal = () => {
     const loginModalStore = useLoginModalStore();
     const registerModalStore = useRegisterModalStore();
-    
 
-
-    const switchToLoginModal =()=>{
+    const switchToLoginModal = () => {
         registerModalStore.onClose()
         loginModalStore.onOpen();
 
-
     }
-    
 
     const {
         register,
