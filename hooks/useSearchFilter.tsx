@@ -37,11 +37,11 @@ const useSearchFilter = create<ISearchStore>()(
         let tempProduct: IBook[] = [];
         if (sort === 'Letest') {
           tempProduct = allData
-        } else if (sort === 'Price-High-Low') {
+        } else if (sort === 'Price-Low-High') {
           // slice() use only for prevent ready only or frozen error
           tempProduct = allData.slice().sort((a, b) => a.price - b.price)
 
-        } else if (sort === "Price-Low-High") {
+        } else if (sort === "Price-High-Low") {
           // slice() use only for prevent ready only or frozen error
           tempProduct = allData.slice().sort((a, b) => b.price - a.price)
 

@@ -14,6 +14,7 @@ import usePostBookModalStore from "@/hooks/usePostBookModalStore";
 import { useRouter } from "next/navigation";
 import useCartStore from "@/hooks/useCartStore";
 
+
 interface navbarProps {
   currentUser?: SafeUser | null;
 }
@@ -35,8 +36,7 @@ const Navbar = ({ currentUser }: navbarProps) => {
   return (
     <>
       <div
-        className={`flex-between py-2 px-6 bg-off-white ${currentUser && "border-b-2 border-light_green"
-          }`}
+        className="flex-between py-1 px-6 bg-off-white border-b-2 border-light_green"
       >
         <Logo />
 
