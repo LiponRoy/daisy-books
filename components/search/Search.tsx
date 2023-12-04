@@ -8,7 +8,7 @@ interface Isearch {
 
 const Search = ({ value, onChange }: Isearch) => {
   return (
-    <div className=" flex justify-end items-center mb-4  ">
+    <div className=" flex justify-end items-center   ">
       <input
         type="text"
         placeholder="Search by name"

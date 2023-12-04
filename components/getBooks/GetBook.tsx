@@ -6,9 +6,12 @@ import useBookDetailStore from "@/hooks/useBookDetailStore";
 import { useRouter } from "next/navigation";
 import useCartStore from "@/hooks/useCartStore";
 import { BsFillCartDashFill } from "react-icons/bs";
+import useBookGridOrListView from "@/hooks/useBookGridOrListView";
+import { MdRemoveRedEye } from "react-icons/md";
 
 const GetBook = ({ book }) => {
   const { addItemToCart, cartProducts } = useCartStore();
+  const GridOrListView = useBookGridOrListView()
   const router = useRouter();
   const { id, price, title, author, category, imageSrc } = book;
 
@@ -31,45 +34,56 @@ const GetBook = ({ book }) => {
 
   return (
     <>
-      <div className="relative border-2 flex flex-col justify-center items-start px-1 group">
+      <div className=" border-2 p-2 rounded-md flex flex-col  justify-center items-start group">
         {/* product Image */}
         <div
           onClick={() => sendIdToStore(id)}
-          className=" relative  w-full cursor-pointer"
+          // className=" relative  -w-full- cursor-pointer"
+          className=" relative  cursor-pointer"
         >
           <Image
-            className="w-full h-60 object-contain"
+            className="w-full h-60 object-fill border-2 border-slate-300"
             src={imageSrc}
             width={400}
             height={400}
             alt="no img found"
           />
 
-          <div className=" absolute inset-0 flex justify-center items-center bg-black/70 opacity-0 group-hover:opacity-100 transition  ">
-            <span className=" text-xl text-white">View Details</span>
+          <div className=" absolute inset-0 flex justify-center items-center bg-black/60 opacity-0 group-hover:opacity-100 transition  ">
+            <div className="flex-col-center text-white">
+            <MdRemoveRedEye size={35}/>
+            <span className=" text-sm text-white shadow-md ">View Details</span>
+             
+            </div>
           </div>
         </div>
         {/*End product Image */}
 
-        {/*Product Containt */}
+        {/*Product Texts and btn */}
+        <div className="">
         <div className=" pt-4 pb-3 px-4 flex flex-col justify-center items-start text-slate-600">
           <div className=" flex justify-center items-center gap-x-2">
-            <span className=" capitalize  font-r ">{title} </span>
+            <span className=" capitalize  font-medium text-lg ">{title} </span>
           </div>
           <div className=" flex justify-center items-center gap-x-2">
             <span>Price:</span>
-            <span className=" capitalize  font-r ">{price}</span>
+            <span className=" capitalize  font-r ">{price} <span className=" ml-1">TK</span></span>
           </div>
-        </div>
-
+           {/* add to cart btn */}
         <div
           onClick={addToCart}
-          className=" absolute bottom-[6px] right-[6px] flex justify-center items-center bg-light_green text-white w-10 h-10 rounded-full cursor-pointer hover:border-2 border-slate-400"
+          className="flex justify-center items-center bg-light_green text-white rounded-md cursor-pointer  border-slate-400 p-2 my-2"
         >
-          <div className="hover:animate-pulse ">
-            <BsFillCartDashFill size={18} />
+          <div className="hover:animate-pulse flex justify-center items-center ">
+            <BsFillCartDashFill size={16} />
+            <span className=" text-sm ml-1">Cart</span>
           </div>
         </div>
+        {/* End add to cart btn */}
+        </div>
+         
+        </div>
+
       </div>
     </>
   );
