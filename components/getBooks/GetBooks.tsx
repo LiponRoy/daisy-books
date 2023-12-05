@@ -57,31 +57,19 @@ const GetBooks = () => {
                 {filteredBook.length === 0 ? (
                   <span className=" text-red-700">No Item Found</span>
                 ) : (
-                  <span className=" text-slate-500 text-md font-medium">
-                    {`${filteredBook.length}`}: Item Found
+                  <span className="flex justify-center items-center text-slate-500 text-md font-medium">
+                    {`${filteredBook.length}`}- Item <span className=" hidden md:flex">Found</span>
                   </span>
                 )}
               </div>
-              <ReactPaginate
-                className=" flex justify-center items-center"
-                previousLabel={"Prev"}
-                nextLabel={"Next"}
-                breakLabel="..."
-                pageCount={pageCount}
-                onPageChange={changePage}
-                previousLinkClassName={" p-1 rounded mx-2 text-slate-500"}
-                nextLinkClassName={" p-1 rounded mx-2 text-slate-500"}
-                disabledClassName={"m-1 text-red-600 "}
-                pageLinkClassName={"m-1 "}
-                activeClassName={"mx-1 text-light_green text-xl font-semibold"}
-              />
+             
             </div>
 
             {/* right-Side */}
 
-            <div className="flex-center">
+            <div className=" flex-center">
               {/* list and grid view buttons */}
-              <div  className="flex-center text-slate-500  gap-x-2 mr-4">
+              <div  className="hidden md:flex justify-center items-center  text-slate-500  gap-x-2 mr-4">
                 <span className=" text-slate-500">View</span>
                 <div onClick={GridOrListView.onTrue} className={` cursor-pointer ${GridOrListView.isListView && "text-light_green border-2 border-slate-200 p-1 rounded-md"}`}>
                   <FaList size={28} />
@@ -114,7 +102,21 @@ const GetBooks = () => {
                 .map((book) => <GetBook key={book.id} book={book} />)
             )}
           </div>
+          <ReactPaginate
+                className=" flex justify-center items-center mt-6  "
+                previousLabel={"Prev"}
+                nextLabel={"Next"}
+                breakLabel="..."
+                pageCount={pageCount}
+                onPageChange={changePage}
+                previousLinkClassName={" p-1 rounded mx-2 text-lg text-slate-500 font-semibold"}
+                nextLinkClassName={" p-1 rounded mx-2 text-lg text-slate-500 font-semibold"}
+                disabledClassName={"m-1 text-red-600 "}
+                pageLinkClassName={"m-1 text-xl  px-2"}
+                activeClassName={"mx-1 text-light_green text-xl font-semibold border-2 border-light_green rounded-md"}
+              />
         </div>
+        
       </div>
       {/* book wrapper */}
     </>

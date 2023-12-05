@@ -48,7 +48,7 @@ const page = () => {
     <>
       <ClientOnly>
         <div className=" container ">
-          <div className=" grid grid-cols-6">
+          <div className=" grid grid-cols-1 md:grid-cols-6">
             <div className=" col-span-4 mx-8 my-1">
               {cartProducts &&
                 cartProducts.map((item) => (
@@ -58,16 +58,17 @@ const page = () => {
                       width="200"
                       height="200"
                       alt="no pic"
-                      className=" w-14 h-full"
+                      className=" basis-20 w-full h-28"
                     />
-                    <div className=" hidden  md:flex flex-col justify-start">
-                      <span>{item.title}</span>
-                      <span>
+                    <div className="basis-[25%]  flex flex-col justify-start ">
+                      <span className="hidden md:flex text-base font-medium text-slate-600 uppercase">{item.title}</span>
+                      
+                      <span className=" ml-2 md:ml-0">
                         {item.price} <span className=" ml-1">TK</span>{" "}
                       </span>
                     </div>
 
-                    <div className="flex-center gap-x-1">
+                    <div className="basis-[25%] flex flex-col md:flex-row justify-center items-center gap-x-1 ml-4 ">
                       <div
                         onClick={() => incrementItem(item)}
                         className=" text-light_green cursor-pointer "
@@ -88,7 +89,7 @@ const page = () => {
                     </div>
                     <div
                       onClick={() => deleteItem(item)}
-                      className="cursor-pointer mr-2 text-light_green"
+                      className="basis-[25%] cursor-pointer ml-6 text-slate-600"
                     >
                       <RiDeleteBin6Line size={26} />
                     </div>
@@ -96,7 +97,7 @@ const page = () => {
                 ))}
             </div>
             <div className=" col-span-2 ">
-              <div className="flex flex-col justify-start items-center bg-off_white border border-light_green rounded-md shadow mx-8 my-3 gap-y-3 mt-4 p-4">
+              <div className="flex flex-col justify-start items-center bg-off_white border border-light_green rounded-md shadow mx-8 my-3 gap-y-3 mt-3 p-4">
                 <span className="text-slate-600 text-start px-4 uppercase font-semibold text-xl mb-6 w-full">
                   total calculation
                 </span>
