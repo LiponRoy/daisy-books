@@ -12,6 +12,7 @@ import { TfiLayoutGrid3Alt } from "react-icons/tfi";
 //for react-paginate
 import ReactPaginate from "react-paginate";
 import useBookGridOrListView from "@/hooks/useBookGridOrListView";
+import { BsFilterLeft } from "react-icons/bs";
 
 const GetBooks = () => {
   const GridOrListView=useBookGridOrListView();
@@ -44,12 +45,12 @@ const GetBooks = () => {
       {/* book wrapper */}
       <div className="container grid grid-cols-4 gap-6 pt-4 pb-16">
         {/* sideBar */}
-        <div className=" col-span-1 px-4 bp-6 shadow rounded  overflow-hidden">
+        <div className="hidden md:flex  col-span-1 px-4 bp-6 shadow rounded  overflow-hidden">
           <BookFilter />
         </div>
 
         {/* main */}
-        <div className=" col-span-3">
+        <div className="col-span-4 md:col-span-3">
           <div className=" flex justify-between items-center my-2">
             {/* left-Side */}
             <div className="flex justify-center items-center ">
@@ -57,9 +58,15 @@ const GetBooks = () => {
                 {filteredBook.length === 0 ? (
                   <span className=" text-red-700">No Item Found</span>
                 ) : (
-                  <span className="flex justify-center items-center text-slate-500 text-md font-medium">
-                    {`${filteredBook.length}`}- Item <span className=" hidden md:flex">Found</span>
+                 <div className="">
+                   <span className="hidden md:flex justify-center items-center text-slate-500 text-md font-medium">
+                    {`${filteredBook.length}`}- Item <span className="flex">Found</span>
                   </span>
+                  <div className="md:hidden flex justify-center items-center gap-x-1 cursor-pointer  rounded-md text-light_green ">
+                    <BsFilterLeft size={28}/>
+                    <span className="text-slate-600">Filter</span>
+                  </div>
+                 </div>
                 )}
               </div>
              
