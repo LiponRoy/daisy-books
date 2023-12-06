@@ -13,11 +13,13 @@ import { TfiLayoutGrid3Alt } from "react-icons/tfi";
 import ReactPaginate from "react-paginate";
 import useBookGridOrListView from "@/hooks/useBookGridOrListView";
 import { BsFilterLeft } from "react-icons/bs";
+import useLeftSidebar from "@/hooks/useLeftSidebar";
 
 const GetBooks = () => {
-  const GridOrListView=useBookGridOrListView();
+  const GridOrListView = useBookGridOrListView();
+  const LeftSidebar = useLeftSidebar();
 
-  console.log("is List View : ",GridOrListView.isListView);
+  console.log("leftsidebar : ", LeftSidebar.isOpen)
 
 
   const { FILTER_BY_SEARCH, filteredBook } = useSearchFilter();
@@ -58,25 +60,25 @@ const GetBooks = () => {
                 {filteredBook.length === 0 ? (
                   <span className=" text-red-700">No Item Found</span>
                 ) : (
-                 <div className="">
-                   <span className="hidden md:flex justify-center items-center text-slate-500 text-md font-medium">
-                    {`${filteredBook.length}`}- Item <span className="flex">Found</span>
-                  </span>
-                  <div className="md:hidden flex justify-center items-center gap-x-1 cursor-pointer  rounded-md text-light_green ">
-                    <BsFilterLeft size={28}/>
-                    <span className="text-slate-600">Filter</span>
+                  <div className="">
+                    <span className="hidden md:flex justify-center items-center text-slate-500 text-md font-medium">
+                      {`${filteredBook.length}`}- Item <span className="flex">Found</span>
+                    </span>
+                    <div onClick={LeftSidebar.onOpen} className="md:hidden flex justify-center items-center gap-x-1 cursor-pointer  rounded-md text-light_green ">
+                      <BsFilterLeft size={28} />
+                      <span className="text-slate-600">Filter</span>
+                    </div>
                   </div>
-                 </div>
                 )}
               </div>
-             
+
             </div>
 
             {/* right-Side */}
 
             <div className=" flex-center">
               {/* list and grid view buttons */}
-              <div  className="hidden md:flex justify-center items-center  text-slate-500  gap-x-2 mr-4">
+              <div className="hidden md:flex justify-center items-center  text-slate-500  gap-x-2 mr-4">
                 <span className=" text-slate-500">View</span>
                 <div onClick={GridOrListView.onTrue} className={` cursor-pointer ${GridOrListView.isListView && "text-light_green border-2 border-slate-200 p-1 rounded-md"}`}>
                   <FaList size={28} />
@@ -94,11 +96,10 @@ const GetBooks = () => {
             </div>
           </div>
           <div
-            className={`${
-              isLoading || filteredBook.length === 0
-                ? " h-screen w-full flex justify-center items-center"
-                : `grid grid-cols-1 ${GridOrListView.isListView ? "md:grid-cols-1":"md:grid-cols-4"} gap-4`
-            }`}
+            className={`${isLoading || filteredBook.length === 0
+              ? " h-screen w-full flex justify-center items-center"
+              : `grid grid-cols-1 ${GridOrListView.isListView ? "md:grid-cols-1" : "md:grid-cols-4"} gap-4`
+              }`}
           >
             {isLoading ? (
               <div className=" text-2xl font-medium">Loading...</div>
@@ -110,20 +111,32 @@ const GetBooks = () => {
             )}
           </div>
           <ReactPaginate
-                className=" flex justify-center items-center mt-6  "
-                previousLabel={"Prev"}
-                nextLabel={"Next"}
-                breakLabel="..."
-                pageCount={pageCount}
-                onPageChange={changePage}
-                previousLinkClassName={" p-1 rounded mx-2 text-lg text-slate-500 font-semibold"}
-                nextLinkClassName={" p-1 rounded mx-2 text-lg text-slate-500 font-semibold"}
-                disabledClassName={"m-1 text-red-600 "}
-                pageLinkClassName={"m-1 text-xl  px-2"}
-                activeClassName={"mx-1 text-light_green text-xl font-semibold border-2 border-light_green rounded-md"}
-              />
+            className=" flex justify-center items-center mt-6  "
+            previousLabel={"Prev"}
+            nextLabel={"Next"}
+            breakLabel="..."
+            pageCount={pageCount}
+            onPageChange={changePage}
+            previousLinkClassName={" p-1 rounded mx-2 text-lg text-slate-500 font-semibold"}
+            nextLinkClassName={" p-1 rounded mx-2 text-lg text-slate-500 font-semibold"}
+            disabledClassName={"m-1 text-red-600 "}
+            pageLinkClassName={"m-1 text-xl  px-2"}
+            activeClassName={"mx-1 text-light_green text-xl font-semibold border-2 border-light_green rounded-md"}
+          />
         </div>
-        
+        {/* mobile sidebar for filter item */}
+        <div
+          className={`${LeftSidebar.isOpen ? "sidebarContainer" : "sidebarContainer-Hidden"
+
+            }`}
+        >
+
+          <span onClick={LeftSidebar.onClose}>Close</span>
+          <BookFilter />
+
+        </div>
+        {/* End mobile sidebar for filter item */}
+
       </div>
       {/* book wrapper */}
     </>

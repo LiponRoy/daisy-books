@@ -12,6 +12,7 @@ import { MdRemoveRedEye } from "react-icons/md";
 const GetBook = ({ book }) => {
   const { addItemToCart, cartProducts } = useCartStore();
   const GridOrListView = useBookGridOrListView();
+
   const router = useRouter();
   const { id, price, title, author, category, imageSrc } = book;
 
@@ -35,11 +36,10 @@ const GetBook = ({ book }) => {
   return (
     <>
       <div
-        className={`border-2 pt-2  rounded-md flex ${
-          GridOrListView.isListView
-            ? " justify-start"
-            : "flex-col  justify-center"
-        }  ${GridOrListView.isListView ? "items-end" : "items-center"} group`}
+        className={`border-2 pt-2  rounded-md flex ${GridOrListView.isListView
+          ? " justify-start"
+          : "flex-col  justify-center"
+          }  ${GridOrListView.isListView ? "items-end" : "items-center"} group`}
       >
         {/* product Image */}
         <div
@@ -67,11 +67,10 @@ const GetBook = ({ book }) => {
 
         {/*Product Texts and btn */}
         <div
-          className={`${
-            GridOrListView.isListView ? "flex-col-start" : "flex-col-center"
-          }`}
+          className={`${GridOrListView.isListView ? "flex-col-start" : "flex-col-center"
+            }`}
         >
-          <div className={`pt-2 pb-2 px-1 flex flex-col justify-center ${GridOrListView.isListView ? "items-start ml-2":"items-center "} text-slate-600`}>
+          <div className={`pt-2 pb-2 px-1 flex flex-col justify-center ${GridOrListView.isListView ? "items-start ml-2" : "items-center "} text-slate-600`}>
             <div className=" flex justify-center items-center gap-x-2">
               <span className=" capitalize  font-medium text-base ">
                 {title}{" "}
@@ -99,6 +98,8 @@ const GetBook = ({ book }) => {
           </div>
         </div>
       </div>
+      {/* // for left sideBar */}
+
     </>
   );
 };
