@@ -14,11 +14,9 @@ const Search = ({ value, onChange }: Isearch) => {
         placeholder="Search by name"
         value={value}
         onChange={onChange}
-        className=" w-full outline-none py-2 pl-2 border-2 border-light_green rounded-md"
+        className=" w-full outline-none py-2 pl-2 border border-light_green rounded-md"
       />
-      <div className=" text-light_green">
-        {/* <IoMdSearch size={32} /> */}
-      </div>
+      
     </div>
   );
 };

@@ -10,6 +10,7 @@ interface ICartStore {
     incrementCart: (newItem: IBook) => void;
     decrementCart: (newItem: IBook) => void;
     removeItemFromCart: (newItem: IBook) => void;
+    allCartRemove: () => void;
 }
 
 const useCartStore = create<ICartStore>()(
@@ -94,6 +95,17 @@ const useCartStore = create<ICartStore>()(
                     return {
                         ...state,
                         cartProducts: newItem
+                    }
+                })
+            },
+            allCartRemove: () => {
+                
+
+                set((state) => {
+                   
+                    return {
+                        ...state,
+                        cartProducts:[]
                     }
                 })
             },

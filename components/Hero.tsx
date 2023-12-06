@@ -23,7 +23,7 @@ const Hero = () => {
             <div className="basis-1/2  flex flex-col justify-center items-center h-full w-full">
                 <span className='text-4xl md:text-6xl font-bold text-light_green'>Finding Books.</span>
                 <p>Special <span className=' text-4xl font-medium text-light_green'>50%</span > Off For Our Student Community</p>
-                <div className=" w-60">
+                <div className=" w-60 mt-4">
                     <CustomButton label='Buy Book' outline />
                 </div>
 
