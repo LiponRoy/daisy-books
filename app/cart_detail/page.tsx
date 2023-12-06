@@ -11,8 +11,13 @@ import { FaSquarePlus } from "react-icons/fa6";
 import { FaSquareMinus } from "react-icons/fa6";
 
 const page = () => {
-  const { cartProducts, removeItemFromCart, incrementCart, decrementCart } =
-    useCartStore();
+  const {
+    cartProducts,
+    removeItemFromCart,
+    incrementCart,
+    decrementCart,
+    allCartRemove,
+  } = useCartStore();
   const [totalQuantity, setTotalQuantity] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
 
@@ -48,7 +53,7 @@ const page = () => {
     <>
       <ClientOnly>
         <div className=" container ">
-          <div className=" grid grid-cols-1 md:grid-cols-6">
+          <div className=" grid grid-cols-1 md:grid-cols-6 ">
             <div className=" col-span-4 mx-8 my-1">
               {cartProducts &&
                 cartProducts.map((item) => (
@@ -61,8 +66,10 @@ const page = () => {
                       className=" basis-20 w-full h-28"
                     />
                     <div className="basis-[25%]  flex flex-col justify-start ">
-                      <span className="hidden md:flex text-base font-medium text-slate-600 uppercase">{item.title}</span>
-                      
+                      <span className="hidden md:flex text-base font-medium text-slate-600 uppercase">
+                        {item.title}
+                      </span>
+
                       <span className=" ml-2 md:ml-0">
                         {item.price} <span className=" ml-1">TK</span>{" "}
                       </span>
@@ -89,15 +96,15 @@ const page = () => {
                     </div>
                     <div
                       onClick={() => deleteItem(item)}
-                      className="basis-[25%] cursor-pointer ml-6 text-slate-600"
+                      className="basis-[10%] cursor-pointer ml-6 text-slate-600"
                     >
                       <RiDeleteBin6Line size={26} />
                     </div>
                   </div>
                 ))}
             </div>
-            <div className=" col-span-2 ">
-              <div className="flex flex-col justify-start items-center bg-off_white border border-light_green rounded-md shadow mx-8 my-3 gap-y-3 mt-3 p-4">
+            <div className=" col-span-2">
+              <div className=" relative flex flex-col justify-start items-center bg-off_white border border-light_green rounded-md shadow mx-8 my-3 gap-y-3 mt-3 p-4 ">
                 <span className="text-slate-600 text-start px-4 uppercase font-semibold text-xl mb-6 w-full">
                   total calculation
                 </span>
@@ -128,6 +135,12 @@ const page = () => {
                 </div>
                 <div className=" w-[80%]">
                   <CustomButton outline label="Proceed to checkout" />
+                </div>
+                <div
+                  onClick={allCartRemove}
+                  className=" absolute -bottom-12 right-0  bg-light_green p-2 rounded-md text-white cursor-pointer "
+                >
+                  <span >Remove All Cart</span>
                 </div>
               </div>
             </div>
