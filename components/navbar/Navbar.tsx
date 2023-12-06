@@ -93,7 +93,7 @@ const Navbar = ({ currentUser }: navbarProps) => {
 
             {toggle && (
               <div
-                className={`${toggle ? "toggleContainer" : "toggleContainerHidden"
+                className={`${toggle ? "sidebarContainer" : "sidebarContainer-Hidden"
                   }`}
               >
                 {navLink.map((nav) => (
