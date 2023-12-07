@@ -38,9 +38,8 @@ const BookFilter = () => {
 
   const clearFilter = () => {
     filterProduct("All")
-    // setCategory("All");
-    setSort("letest")
     setPrice(1000)
+    setSort("Letest")
     
   }
 
