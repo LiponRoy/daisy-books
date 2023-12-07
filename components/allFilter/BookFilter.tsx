@@ -8,27 +8,40 @@ import useLeftSidebar from '@/hooks/useLeftSidebar';
 
 const BookFilter = () => {
   const { data, isFetching, isLoading, isSuccess } = useGetBooksQuery();
-  const { FILTER_BY_CATEGORY, SORT_PRODUCT } = useSearchFilter();
+  const { FILTER_BY_CATEGORY, SORT_PRODUCT,CALCULATE_MAX_MIN_PRICE,MIN_PRICE,MAX_PRICE,FILTER_BY_PRICE} = useSearchFilter();
   const leftSideBar = useLeftSidebar()
 
   const allCategory = [...new Set(data?.map((prod) => prod.category)), 'All'];
   const [category, setCategory] = useState('All');
+  const [price, setPrice] = useState<number>(1000);
   const [sort, setSort] = useState('letest');
+
+  console.log("min price",MIN_PRICE)
+  console.log("max price",MAX_PRICE)
 
   const filterProduct = (cat: string) => {
     setCategory(cat);
     FILTER_BY_CATEGORY(data, cat);
   };
 
-  useEffect(() => { }, [data]);
+  useEffect(() => { 
+    CALCULATE_MAX_MIN_PRICE(data)
+  }, [data]);
+
+  useEffect(() => { 
+    FILTER_BY_PRICE(data,price)
+  }, [data,price]);
 
   useEffect(() => {
     SORT_PRODUCT(data, sort);
   }, [sort]);
 
   const clearFilter = () => {
-    setCategory("All");
+    filterProduct("All")
+    // setCategory("All");
     setSort("letest")
+    setPrice(1000)
+    
   }
 
   return (
@@ -47,7 +60,7 @@ const BookFilter = () => {
         </div>
         {/* //item.titles === category ? */}
 
-        {allCategory.map((item) => (
+        {allCategory?.map((item) => (
           <div
           onClick={leftSideBar.onClose}
             key={item}
@@ -99,13 +112,14 @@ const BookFilter = () => {
           <MdPlayArrow className="text-light_green" size={24} />
           </div>
         </div>
-        <p className="text-slate-500 ">1500</p>
+        <p className="text-slate-500 ">{price}</p>
         <input
           className="range pr-6 accent-light_green"
           type="range"
-          name="price"
-          min="100"
-          max="1000"
+          value={price}
+          onChange={(e:React.ChangeEvent<HTMLInputElement>)=>setPrice( Number(e.target.value))}
+          min={MIN_PRICE}
+          max={MAX_PRICE}
         ></input>
       </div>
       {/* End Price rang */}
