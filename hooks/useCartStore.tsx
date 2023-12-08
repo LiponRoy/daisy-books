@@ -1,4 +1,4 @@
-import { IBook } from "@/types/ndex";
+import { IBook } from "@/types";
 import { create } from "zustand";
 import { devtools, persist } from "zustand/middleware";
 
@@ -99,13 +99,13 @@ const useCartStore = create<ICartStore>()(
                 })
             },
             allCartRemove: () => {
-                
+
 
                 set((state) => {
-                   
+
                     return {
                         ...state,
-                        cartProducts:[]
+                        cartProducts: []
                     }
                 })
             },

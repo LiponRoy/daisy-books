@@ -1,4 +1,4 @@
-import { IBook } from "@/types/ndex";
+import { IBook } from "@/types";
 import { create } from "zustand";
 import { devtools, persist } from "zustand/middleware";
 
@@ -7,7 +7,7 @@ interface ISearchStore {
   FILTER_BY_SEARCH: (dataAll: IBook[], searchItem: string) => void;
   FILTER_BY_CATEGORY: (allData: IBook[], cat: string) => void;
   CALCULATE_MAX_MIN_PRICE: (allData: IBook[]) => void;
-  FILTER_BY_PRICE: (allData: IBook[], cat: string) => void;
+  FILTER_BY_PRICE: (allData: IBook[], price: number) => void;
   SORT_PRODUCT: (allData: IBook[], sort: string) => void;
 
   MIN_PRICE: number;
@@ -54,12 +54,12 @@ const useSearchFilter = create<ISearchStore>()(
         set({ MAX_PRICE: Math.max(...priceAll) });
       },
 
-      FILTER_BY_PRICE: (allData,price) => {
+      FILTER_BY_PRICE: (allData, price) => {
         // convert string to number
-        const myPrice=Number(price);
-        let tempProduct:IBook[] = [];
+        const myPrice = price;
+        let tempProduct: IBook[] = [];
 
-       tempProduct=allData?.filter((data)=>data.price<=myPrice)
+        tempProduct = allData?.filter((data) => data.price <= myPrice)
 
         set({ filteredBook: tempProduct });
       },
