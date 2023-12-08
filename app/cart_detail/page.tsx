@@ -2,7 +2,7 @@
 import ClientOnly from "@/components/ClientOnly";
 import CustomButton from "@/components/CustomButton";
 import useCartStore from "@/hooks/useCartStore";
-import { IBook } from "@/types/ndex";
+import { IBook } from "@/types";
 import Image from "next/image";
 import { it } from "node:test";
 import React, { useEffect, useState } from "react";
@@ -85,11 +85,10 @@ const page = () => {
                       <span className=" mx-2">{item.cartQuantity}</span>
                       <div
                         onClick={() => decrementItem(item)}
-                        className={` ${
-                          item.cartQuantity === 1
+                        className={` ${item.cartQuantity === 1
                             ? "text-slate-400 cursor-not-allowed"
                             : "text-light_green cursor-pointer"
-                        }`}
+                          }`}
                       >
                         <FaSquareMinus size={26} />
                       </div>

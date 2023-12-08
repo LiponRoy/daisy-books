@@ -130,23 +130,22 @@ const GetBooks = () => {
         <div
 
 
-          className={`${
-            LeftSidebar.isOpen && "fixed inset-0 bg-black/70 full-page-center z-40"
-          }`}
-        >
-        <div
-          className={`${LeftSidebar.isOpen ? "sidebarContainer" : "sidebarContainer-Hidden"
-
+          className={`${LeftSidebar.isOpen && "fixed inset-0 bg-black/70 full-page-center z-40"
             }`}
         >
+          <div
+            className={`${LeftSidebar.isOpen ? "sidebarContainer" : "sidebarContainer-Hidden"
 
-         
-          <div onClick={LeftSidebar.onClose} className="absolute -top-7 -right-7 text-white cursor-pointer rounded-full border-4 border-light_green animate-spin hover:animate-none">
-            <RxCrossCircled size={28}/>
+              }`}
+          >
+
+
+            <div onClick={LeftSidebar.onClose} className="absolute -top-7 -right-7 text-white cursor-pointer rounded-full border-4 border-light_green animate-spin hover:animate-none">
+              <RxCrossCircled size={28} />
+            </div>
+            <BookFilter />
+
           </div>
-          <BookFilter />
-
-        </div>
         </div>
         {/* End mobile sidebar for filter item */}
 

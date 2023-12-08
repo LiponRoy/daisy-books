@@ -8,8 +8,9 @@ import useCartStore from "@/hooks/useCartStore";
 import { BsFillCartDashFill } from "react-icons/bs";
 import useBookGridOrListView from "@/hooks/useBookGridOrListView";
 import { MdRemoveRedEye } from "react-icons/md";
+import { IBook } from "@/types";
 
-const GetBook = ({ book }) => {
+const GetBook = ({ book }: any) => {
   const { addItemToCart, cartProducts } = useCartStore();
   const GridOrListView = useBookGridOrListView();
 

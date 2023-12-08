@@ -12,12 +12,12 @@ import { signIn } from 'next-auth/react';
 // icons for social media login
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
+import { useRouter } from 'next/navigation';
 
 const LoginModal = () => {
+    const router = useRouter();
     const loginModalStore = useLoginModalStore();
     const registerModalStore = useRegisterModalStore();
-
-
 
     const switchToRegisterModal = () => {
         loginModalStore.onClose();
@@ -49,7 +49,7 @@ const LoginModal = () => {
 
             if (callback?.ok) {
                 toast.success("Logged in");
-                // router.refresh();
+                router.refresh();
                 loginModalStore.onClose();
             }
 

@@ -1,4 +1,4 @@
-import { IBook } from '@/types/ndex';
+import { IBook } from '@/types';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 export const bookApi = createApi({
@@ -9,7 +9,7 @@ export const bookApi = createApi({
 	tagTypes: ['book_tag'],
 
 	endpoints: (builder) => ({
-		getBooks: builder.query<IBook[], void>({
+		getBooks: builder?.query<IBook[], void>({
 			query: () => '/api/book',
 			transformResponse: (res: any) => res.reverse(),
 			providesTags: ['book_tag'],
