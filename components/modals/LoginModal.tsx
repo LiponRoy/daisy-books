@@ -25,6 +25,10 @@ const LoginModal = () => {
 
     }
 
+    const signinWithGoogle = () => {
+        signIn('google')
+    }
+
 
     const {
         register,
@@ -82,12 +86,10 @@ const LoginModal = () => {
         </form>
         <div className="w-full flex-col-center">
             <span className=' text-center'>OR</span>
-            <CustomButton icon={FcGoogle} outline label='Login With Google' />
-            <CustomButton icon={FaGithub} outline label='Login With Github' />
-
+            <CustomButton onClick={signinWithGoogle} icon={FcGoogle} outline label='Login With Google' />
 
         </div>
-        <div className=" text-center text-slate-500 my-1">
+        <div className=" text-center text-slate-500 my-1 mt-4">
             <span>Don't have an account? <span onClick={switchToRegisterModal} className=' font-semibold cursor-pointer'>Signup Now</span></span>
         </div>
 

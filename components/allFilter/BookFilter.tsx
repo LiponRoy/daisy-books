@@ -5,6 +5,8 @@ import { bookFilter, bookSort } from '@/constants';
 import { useGetBooksQuery } from '@/redux/feature/bookApi';
 import useSearchFilter from '@/hooks/useSearchFilter';
 import useLeftSidebar from '@/hooks/useLeftSidebar';
+import { RxCross2 } from "react-icons/rx";
+import { FaCheck } from "react-icons/fa6";
 
 const BookFilter = () => {
   const { data, isFetching, isLoading, isSuccess } = useGetBooksQuery();
@@ -57,11 +59,11 @@ const BookFilter = () => {
               <MdPlayArrow className="text-light_green" size={24} />
             </div>
           </div>
-          {/* //item.titles === category ? */}
+
 
           {allCategory?.map((item) => (
             <div
-              onClick={leftSideBar.onClose}
+              // onClick={leftSideBar.onClose}
               key={item}
               className=" flex flex-col text-slate-600 cursor-pointer "
             >
@@ -95,14 +97,14 @@ const BookFilter = () => {
             className=" rounded bg-white border-b-2 text-slate-600 cursor-pointer"
           >
             {bookSort.map((item) => (
-              <option onClick={leftSideBar.onClose} key={item.id}>{item.titles}</option>
+              <option key={item.id}>{item.titles}</option>
             ))}
           </select>
         </div>
         {/* End Sort By*/}
 
         {/* Price rang */}
-        <div className="hidden md:flex flex-col justify-center items-start">
+        <div className="hidden md:flex flex-col justify-center items-start pr-2">
           <div className=" flex justify-center items-center">
             <span className=" text-slate-500 text-lg font-semibold py-2">
               Price
@@ -123,11 +125,27 @@ const BookFilter = () => {
         </div>
         {/* End Price rang */}
 
-        {/* Clear Filter Button */}
-        <div className=" w-full mt-8 cursor-pointer">
-          <span className='bg-light_green p-2  rounded-md text-white' onClick={clearFilter}>Clear Filter</span>
+        <div className="flex-col-start mt-8 gap-y-4">
+
+
+          {/*Apply Filter Button ( only close window ) */}
+          <div className=" cursor-pointer md:hidden">
+            <div className='bg-light_green p-2  rounded-md text-white text-sm md:text-base flex-center gap-x-3'>
+              <FaCheck size={14} />
+              <span onClick={leftSideBar.onClose}>Apply</span>
+            </div>
+          </div>
+          {/* Clear Filter Button */}
+
+
+          <div className=" cursor-pointer">
+            <div className='bg-light_green p-2  rounded-md text-white text-sm md:text-base flex-center gap-x-3'>
+              <RxCross2 size={16} />
+              <span onClick={clearFilter}>Clear </span>
+            </div>
+          </div>
+
         </div>
-        {/*End  Clear Filter Button */}
       </div>
 
     </div>

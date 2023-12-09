@@ -63,7 +63,7 @@ const GetBooks = () => {
                 ) : (
                   <div className="">
                     <span className="hidden md:flex justify-center items-center text-slate-500 text-md font-medium">
-                      {`${filteredBook.length}`}- Item <span className="flex">Found</span>
+                      {`${filteredBook.length}`}- Item- <span className="flex">Found</span>
                     </span>
                     <div onClick={LeftSidebar.onOpen} className="md:hidden flex justify-center items-center gap-x-1 cursor-pointer  rounded-md text-light_green ">
                       <BsFilterLeft size={28} />
