@@ -8,7 +8,7 @@ import { FaHeadphonesSimple } from "react-icons/fa6";
 
 const Hero = () => {
     return (
-        <div className='container w-full flex flex-col md:flex-row justify-between items-center bg-off_white '>
+        <div className='w-full flex flex-col md:flex-row justify-between items-center bg-off_white '>
 
 
             <div className="basis-[40%] h-full flex-center">
@@ -37,7 +37,7 @@ const Hero = () => {
 
                 <span className='absolute -top-5 left-0 bg-light_green px-[4px] rounded-md text-white mb-2'>our services</span>
 
-                <div className="flex justify-between items-center w-full px-8  hover:bg-white hover:shadow-md rounded-md p-2 my-2">
+                <div className="flex justify-between items-center w-full px-8 rounded-md p-2 my-2">
                     <div className=" text-slate-600">
                         <CiDeliveryTruck size={28} />
                     </div>
@@ -49,7 +49,7 @@ const Hero = () => {
 
                 </div>
 
-                <div className="flex justify-between items-center w-full px-8   hover:bg-white hover:shadow-md rounded-md p-2 my-2">
+                <div className="flex justify-between items-center w-full px-8  rounded-md p-2 my-2">
                     <div className=" text-slate-600">
                         <IoIosBicycle size={28} />
                     </div>
@@ -59,7 +59,7 @@ const Hero = () => {
                         <span className=' text-xs'>Across The Country</span>
                     </div>
                 </div>
-                <div className="flex justify-between items-center w-full px-8   hover:bg-white hover:shadow-md rounded-md p-2 my-2">
+                <div className="flex justify-between items-center w-full px-8  rounded-md p-2 my-2">
                     <div className=" text-slate-600">
                         <RiRefund2Line size={28} />
                     </div>
@@ -70,7 +70,7 @@ const Hero = () => {
                     </div>
                 </div>
 
-                <div className="flex justify-between items-center w-full px-8   hover:bg-white hover:shadow-md rounded-md p-2 my-2">
+                <div className="flex justify-between items-center w-full px-8  rounded-md p-2 my-2">
                     <div className=" text-slate-600">
                         <CiDeliveryTruck size={28} />
                     </div>
@@ -81,7 +81,7 @@ const Hero = () => {
                     </div>
                 </div>
 
-                <div className="flex justify-between items-center w-full px-8   hover:bg-white hover:shadow-md rounded-md p-2 my-2">
+                <div className="flex justify-between items-center w-full px-8  rounded-md p-2 my-2">
                     <div className=" text-slate-600 mr-2">
                         <FaHeadphonesSimple size={28} />
                     </div>
