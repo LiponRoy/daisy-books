@@ -1,13 +1,13 @@
-import { IBook } from "@/types";
+import { IBook } from "@/types/index";
 import { create } from "zustand";
 import { devtools, persist } from "zustand/middleware";
 
 interface ISearchStore {
   filteredBook: IBook[];
-  FILTER_BY_SEARCH: (dataAll: IBook[], searchItem: string) => void;
+  FILTER_BY_SEARCH: (allData: IBook[], searchItem: string) => void;
   FILTER_BY_CATEGORY: (allData: IBook[], cat: string) => void;
   CALCULATE_MAX_MIN_PRICE: (allData: IBook[]) => void;
-  FILTER_BY_PRICE: (allData: IBook[], price: number) => void;
+  FILTER_BY_PRICE: (allData: IBook[], cat: string) => void;
   SORT_PRODUCT: (allData: IBook[], sort: string) => void;
 
   MIN_PRICE: number;
@@ -21,8 +21,8 @@ const useSearchFilter = create<ISearchStore>()(
       MIN_PRICE: 0,
       MAX_PRICE: 0,
 
-      FILTER_BY_SEARCH: (dataAll, searchItem) => {
-        const tempProducts = dataAll?.filter(
+      FILTER_BY_SEARCH: (allData, searchItem) => {
+        const tempProducts = allData?.filter(
           (item) =>
             item.title.toLowerCase().includes(searchItem.toLowerCase()) ||
             item.author.toLowerCase().includes(searchItem.toLowerCase())
@@ -54,12 +54,12 @@ const useSearchFilter = create<ISearchStore>()(
         set({ MAX_PRICE: Math.max(...priceAll) });
       },
 
-      FILTER_BY_PRICE: (allData, price) => {
+      FILTER_BY_PRICE: (allData,price) => {
         // convert string to number
-        const myPrice = price;
-        let tempProduct: IBook[] = [];
+        const myPrice=Number(price);
+        let tempProduct:IBook[] = [];
 
-        tempProduct = allData?.filter((data) => data.price <= myPrice)
+       tempProduct=allData?.filter((data)=>data.price<=myPrice)
 
         set({ filteredBook: tempProduct });
       },

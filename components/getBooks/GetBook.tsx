@@ -8,9 +8,8 @@ import useCartStore from "@/hooks/useCartStore";
 import { BsFillCartDashFill } from "react-icons/bs";
 import useBookGridOrListView from "@/hooks/useBookGridOrListView";
 import { MdRemoveRedEye } from "react-icons/md";
-import { IBook } from "@/types";
 
-const GetBook = ({ book }: any) => {
+const GetBook = ({ book }) => {
   const { addItemToCart, cartProducts } = useCartStore();
   const GridOrListView = useBookGridOrListView();
 
@@ -32,6 +31,10 @@ const GetBook = ({ book }: any) => {
   // adding Item to cart
   const addToCart = () => {
     addItemToCart(book);
+
+    let tempId=id;
+
+
   };
 
   return (

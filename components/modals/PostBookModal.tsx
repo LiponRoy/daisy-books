@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import Modal from "./Modal";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import Input from "../Input";
@@ -14,6 +14,8 @@ const PostBookModal = () => {
   const postBookModalStore = usePostBookModalStore();
   const [createBook, { isLoading, isSuccess, isError }] =
     useCreateBookMutation();
+
+    const[btnDisabled,setBtnDisabled]=useState(false)
 
   const {
     register,
@@ -37,6 +39,7 @@ const PostBookModal = () => {
   });
 
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
+    setBtnDisabled(true);
     // Getting image file from input
     const pictureData = data.imageSrc[0];
 
@@ -68,9 +71,11 @@ const PostBookModal = () => {
       setTimeout(() => {
         postBookModalStore.onClose();
         toast.success("Book Created");
+        setBtnDisabled(false);
       }, 2000);
     } catch (error) {
       console.log("Book upload failed");
+      setBtnDisabled(false);
     }
   };
 
@@ -180,7 +185,8 @@ const PostBookModal = () => {
           type="text"
         />
         <CustomButton
-          label={isLoading ? "Posting.." : "SUBMIT"}
+        disabled={btnDisabled}
+          label={btnDisabled ? "Posting..." : "SUBMIT"}
           type="submit"
         />
       </form>

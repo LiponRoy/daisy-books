@@ -1,6 +1,8 @@
-import { IBook } from "@/types";
+import { IBook } from "@/types/index";
 import { create } from "zustand";
 import { devtools, persist } from "zustand/middleware";
+import { toast } from 'react-hot-toast';
+
 
 interface ICartStore {
     cartProducts: IBook[];
@@ -30,18 +32,21 @@ const useCartStore = create<ICartStore>()(
                         const updatedItem = { ...updatedCart[itemIndex] };
                         updatedItem.cartQuantity += 1;
                         updatedCart[itemIndex] = updatedItem;
-
+                        toast.success("Quantity updated");
                         return {
                             ...state,
                             cartProducts: updatedCart,
                         };
                     } else {
+                        toast.success("Added to cart");
                         return {
                             ...state,
                             cartProducts: [
                                 ...state.cartProducts,
                                 { ...newItem, cartQuantity: 1 },
                             ],
+                        
+
                         };
                     }
                 });
@@ -99,13 +104,13 @@ const useCartStore = create<ICartStore>()(
                 })
             },
             allCartRemove: () => {
-
+                
 
                 set((state) => {
-
+                   
                     return {
                         ...state,
-                        cartProducts: []
+                        cartProducts:[]
                     }
                 })
             },
