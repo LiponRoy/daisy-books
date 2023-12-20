@@ -9,8 +9,10 @@ import React, { useEffect, useState } from "react";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { FaSquarePlus } from "react-icons/fa6";
 import { FaSquareMinus } from "react-icons/fa6";
+import { useRouter } from "next/navigation";
 
 const page = () => {
+  const router = useRouter()
   const {
     cartProducts,
     removeItemFromCart,
@@ -45,6 +47,18 @@ const page = () => {
 
   const decrementItem = (item: IBook) => {
     decrementCart(item);
+  };
+
+  
+  const goCheckoutPage = () => {
+    // set total price to store
+    useCartStore.setState((state)=>({
+      totalPrice:totalPrice ? totalPrice:0
+
+    }))
+
+    router.push("/checkout")
+    
   };
 
   // const total
@@ -132,7 +146,7 @@ const page = () => {
                     <span className=" ml-2 text-slate-500">TK</span>
                   </span>
                 </div>
-                <div className=" w-[80%]">
+                <div onClick={goCheckoutPage} className=" w-[80%]">
                   <CustomButton outline label="Proceed to checkout" />
                 </div>
                 <div
