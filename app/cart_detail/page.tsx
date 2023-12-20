@@ -21,7 +21,7 @@ const page = () => {
     allCartRemove,
   } = useCartStore();
   const [totalQuantity, setTotalQuantity] = useState(0);
-  const [totalPrice, setTotalPrice] = useState(0);
+  const [myTotalPrice, setMyTotalPrice] = useState(0);
 
   useEffect(() => {
     const totalQuantity = cartProducts.reduce((prev, next) => {
@@ -34,8 +34,17 @@ const page = () => {
     }, 0);
 
     setTotalQuantity(totalQuantity);
-    setTotalPrice(totalPrice);
+    setMyTotalPrice(totalPrice);
   }, [cartProducts]);
+
+  useEffect(() => {
+    // set total price to store to get from checkout page or other
+    useCartStore.setState((state) => ({
+      totalPrice: myTotalPrice ? myTotalPrice : 0
+
+    }))
+
+  }, [myTotalPrice])
 
   const deleteItem = (item: IBook) => {
     removeItemFromCart(item);
@@ -49,16 +58,9 @@ const page = () => {
     decrementCart(item);
   };
 
-  
+
   const goCheckoutPage = () => {
-    // set total price to store
-    useCartStore.setState((state)=>({
-      totalPrice:totalPrice ? totalPrice:0
-
-    }))
-
     router.push("/checkout")
-    
   };
 
   // const total
@@ -100,8 +102,8 @@ const page = () => {
                       <div
                         onClick={() => decrementItem(item)}
                         className={` ${item.cartQuantity === 1
-                            ? "text-slate-400 cursor-not-allowed"
-                            : "text-light_green cursor-pointer"
+                          ? "text-slate-400 cursor-not-allowed"
+                          : "text-light_green cursor-pointer"
                           }`}
                       >
                         <FaSquareMinus size={26} />
@@ -142,7 +144,7 @@ const page = () => {
                     Total Price:{" "}
                   </span>
                   <span className="ml-2 text-lg text-slate-700 font-semibold">
-                    {totalPrice}
+                    {myTotalPrice}
                     <span className=" ml-2 text-slate-500">TK</span>
                   </span>
                 </div>
