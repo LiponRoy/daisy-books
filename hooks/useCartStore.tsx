@@ -45,7 +45,7 @@ const useCartStore = create<ICartStore>()(
                                 ...state.cartProducts,
                                 { ...newItem, cartQuantity: 1 },
                             ],
-                        
+
 
                         };
                     }
@@ -104,13 +104,13 @@ const useCartStore = create<ICartStore>()(
                 })
             },
             allCartRemove: () => {
-                
+
 
                 set((state) => {
-                   
+
                     return {
                         ...state,
-                        cartProducts:[]
+                        cartProducts: []
                     }
                 })
             },
