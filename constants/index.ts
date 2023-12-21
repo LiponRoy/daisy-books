@@ -58,3 +58,29 @@ export const bookSort: Ioptions[] = [
 		titles: 'Z-A',
 	},
 ];
+export const shopping_guids: Ioptions[] = [
+	{
+		id: 1,
+		titles: 'How to buy',
+	},
+	{
+		id: 2,
+		titles: 'Faq',
+	},
+	{
+		id: 3,
+		titles: 'Where is my order?',
+	},
+	{
+		id: 4,
+		titles: 'Return Policy',
+	},
+	{
+		id: 5,
+		titles: 'Payment',
+	},
+	{
+		id: 6,
+		titles: 'Shipment',
+	},
+];
