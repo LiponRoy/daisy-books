@@ -84,3 +84,21 @@ export const shopping_guids: Ioptions[] = [
 		titles: 'Shipment',
 	},
 ];
+export const Policies: Ioptions[] = [
+	{
+		id: 1,
+		titles: 'Terms of Use',
+	},
+	{
+		id: 2,
+		titles: 'Privacy Policy',
+	},
+	{
+		id: 3,
+		titles: 'Happy Return Policy',
+	},
+	{
+		id: 4,
+		titles: 'Refund Policy',
+	},
+];
