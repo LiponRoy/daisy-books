@@ -31,13 +31,14 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className={roboto.className}>
-        <ReduxProvider>,
+        <ReduxProvider>
+        <div className="bg-light_green h-[0.1px] w-full">-</div>
           <ClientOnly>
+          <Navbar currentUser={currentUser} />
             <RegisterModal />
             <LoginModal />
             <PostBookModal />
             <BookDetailModal />
-            <Navbar currentUser={currentUser} />
             <Toaster />
           </ClientOnly>
           {children}

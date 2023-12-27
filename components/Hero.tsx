@@ -5,10 +5,11 @@ import { CiDeliveryTruck } from "react-icons/ci";
 import { IoIosBicycle } from "react-icons/io";
 import { RiRefund2Line } from "react-icons/ri";
 import { FaHeadphonesSimple } from "react-icons/fa6";
+import { IoBookOutline } from "react-icons/io5";
 
 const Hero = () => {
     return (
-        <div className='w-full flex flex-col md:flex-row justify-between items-center bg-off_white '>
+        <div className=' mt-24 w-full flex flex-col md:flex-row justify-between items-center bg-slate-50'>
 
 
             <div className="basis-[40%] h-full flex-center">
@@ -25,13 +26,26 @@ const Hero = () => {
             </div>
 
             <div className="basis-[40%]  flex flex-col justify-center items-center h-full w-full ">
-                <span className='text-4xl md:text-6xl font-bold text-light_green'>Finding Books.</span>
+           <div className="flex-center">
+           <span className='text-4xl md:text-7xl font-bold text-light_green'>Find Out ...  </span> 
+           <div className="hidden md:flex text-slate-600">
+           <IoBookOutline size="65"/>
+           </div>
+           </div>
+                <span className='text-2xl md:text-5xl font-bold text-light_green my-4'>Your Favorite Book</span> 
+                <div className=" hidden md:flex  md:flex-col justify-center items-center">
                 <div className="my-4">
-                    <p>Special <span className=' text-4xl font-medium text-light_green '>50%</span > Off For Our Student Community</p>
+                    <p className='text-base md:text-2xl font-medium text-slate-600'>Special <span className=' text-5xl font-medium text-light_green '>50%</span > Off For Our Student Community</p>
+                </div>
+                <div className=" flex-col-start text-slate-600">
+                    <span>"Books are the plane, and the train, and the road. They are </span>
+                    <span>the destination, and the journey. They are home"</span>
+                </div>
                 </div>
 
 
             </div>
+
             {/* our services section */}
             <div className="basis-[20%] relative hidden  md:flex flex-row md:flex-col justify-center items-center border-l border-light_green">
 

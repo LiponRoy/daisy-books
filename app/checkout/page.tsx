@@ -53,7 +53,7 @@ const page = () => {
 
   return (
     <>
-      <div className=" flex justify-center items-center">
+      <div className="  mt-24 flex justify-center items-center">
         <div className=" basis-1/2 hidden md:flex">
           <Image
             className='h-[50%] w-[50%]' 
