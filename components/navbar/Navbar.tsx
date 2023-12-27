@@ -35,22 +35,22 @@ const Navbar = ({ currentUser }: navbarProps) => {
 
   return (
     <>
-    <div className="">
-      <div className="flex-between py-1 bg-off-white border-b-2 border-light_green px-8 md:px-20">
+    <div className=" fixed z-50 w-full bg-light_green shadow-[0_3px_10px_rgb(0,0,0,0.2)]">
+      <div className="flex-between bg-off-white border-b-2 border-light_green px-8 md:px-20">
         <Logo />
 
         <div className="hidden md:flex justify-between items-center">
           <div
             onClick={() => router.push("/cart_detail")}
-            className=" pr-4 text-light_green cursor-pointer"
+            className=" pr-4 text-white"
           >
-            <div className="flex justify-center items-center gap-x-1">
+            <div className="flex justify-center items-center gap-x-1 cursor-pointer">
               <span>{cartProducts.length}</span>
               <BsFillCartDashFill size={24} />
             </div>
           </div>
           {navLink.map((nav) => (
-            <div key={nav.id} className=" m-1 uppercase">
+            <div key={nav.id} className=" m-1 uppercase text-white">
               <Link href={nav.url}>{nav.title}</Link>
             </div>
           ))}
@@ -58,28 +58,20 @@ const Navbar = ({ currentUser }: navbarProps) => {
           <div className=" gap-x-2">
             {currentUser ? (
               <div className=" mx-2 flex justify-center items-center gap-x-2">
-                <CustomButton
-                  small
-                  outline
-                  label="PostBook"
-                  onClick={postBookModalStore.onOpen}
-                />
-                <CustomButton
-                  small
-                  outline
-                  label="LogOut"
-                  onClick={() => signOut()}
-                />
+
+                <div onClick={postBookModalStore.onOpen} className=" border border-white rounded-md p-2 text-white cursor-pointer mx-2"> 
+                  <span>PostBook</span>
+                </div>
+                <div onClick={() => signOut()} className=" border border-white rounded-md p-2 text-white cursor-pointer mx-2"> 
+                  <span>LogOut</span>
+                </div>
+               
               </div>
             ) : (
-              <div className=" mx-1">
-                <CustomButton
-                  label="LOGIN"
-                  small
-                  outline
-                  onClick={LoginModalStore.onOpen}
-                />
-              </div>
+
+              <div onClick={LoginModalStore.onOpen} className=" border border-white rounded-md p-2 text-white cursor-pointer mx-2"> 
+                  <span>LOGIN</span>
+                </div>
             )}
           </div>
         </div>
@@ -91,9 +83,9 @@ const Navbar = ({ currentUser }: navbarProps) => {
 
         <div
             onClick={() => router.push("/cart_detail")}
-            className=" pr-4 text-light_green cursor-pointer"
+            className=" pr-4 text-white"
           >
-            <div className="flex justify-center items-center gap-x-1">
+            <div className="flex justify-center items-center gap-x-1  cursor-pointer">
               <span>{cartProducts.length}</span>
               <BsFillCartDashFill size={24} />
             </div>
@@ -107,7 +99,7 @@ const Navbar = ({ currentUser }: navbarProps) => {
           <div className="md:hidden flex-center z-50">
             <div>
 
-              <div onClick={toggleState} className="cursor-pointer">
+              <div onClick={toggleState} className="cursor-pointer text-white">
                 {!toggle && <FiMenu size={24} />}
               </div>
               {toggle && (

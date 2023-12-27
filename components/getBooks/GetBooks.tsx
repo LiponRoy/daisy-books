@@ -115,7 +115,6 @@ const GetBooks = () => {
             className=" flex justify-center items-center mt-6  "
             previousLabel={"Prev"}
             nextLabel={"Next"}
-            breakLabel="..."
             pageCount={pageCount}
             onPageChange={changePage}
             previousLinkClassName={" p-1 rounded mx-2 text-lg text-slate-500 font-semibold"}

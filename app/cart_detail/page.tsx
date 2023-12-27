@@ -68,7 +68,7 @@ const page = () => {
   return (
     <>
       <ClientOnly>
-        <div className=" container ">
+        <div className="mt-24 container ">
           <div className=" grid grid-cols-1 md:grid-cols-6 ">
             <div className=" col-span-4 mx-8 my-1">
               {cartProducts &&

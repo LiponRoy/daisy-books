@@ -9,7 +9,7 @@ import { BsFillCartDashFill } from "react-icons/bs";
 import useBookGridOrListView from "@/hooks/useBookGridOrListView";
 import { MdRemoveRedEye } from "react-icons/md";
 
-const GetBook = ({ book }) => {
+const GetBook = ({ book }:any) => {
   const { addItemToCart, cartProducts } = useCartStore();
   const GridOrListView = useBookGridOrListView();
 

@@ -33,13 +33,14 @@ const bookdetail = ({ params }: any) => {
         <div className=" flex flex-col md:flex-row justify-center items-center  w-full ">
           {/* left side ( book detail ) */}
           <div className=" px-4 md:mr-14">
-            <div className=" flex justify-center items-center gap-x-4">
+            <div className=" flex justify-center items-center gap-x-8 md:gap-x-14">
               <Image
                 src={data?.imageSrc || "/girl.png"}
                 width={500}
                 height={500}
                 alt="no image found"
-                className=" w-[150px] h-[200px] md:w-[300px] md:h-[400px] object-contain shadow mb-4 "
+                className=" w-[150px] h-[200px] md:w-[400px] md:h-[500px] object-contain shadow mb-4 transform transition duration-500 
+                hover:scale-110"
               />
               <div className=" flex flex-col justify-center items-start w-full gap-y-2 text-slate-600">
                 <span className=" text-xl md:text-2xl font-medium my-1">
@@ -71,19 +72,14 @@ const bookdetail = ({ params }: any) => {
                   {data?.description}
                 </span>
 
-                <div className="flex-col-start">
-                  <div className=" flex justify-center items-center gap-x-2">
-                    <span className=" hidden md:flex text-slate-400">Add To Cart -</span>
-                    <div
-                      onClick={() => data && addItemToCart(data)}
-                      className=" flex justify-center items-center bg-light_green text-white w-8 h-8 md:w-12 md:h-12 rounded-full cursor-pointer hover:border-2 border-slate-400"
-                    >
-                      <div className="hover:animate-pulse ">
-                        <BsFillCartDashFill size={20} />
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                <span className="text-md md:text-lg ">
+                  <span className="font-medium mr-2">Availability :</span>
+                  <span className=" text-light_green">In Stock</span>
+                </span>
+
+               <div className=" mr-1">
+               <CustomButton onClick={() => data && addItemToCart(data)} label="Add To Cart" outline/>
+               </div>
               </div>
             </div>
           </div>
@@ -98,7 +94,7 @@ const bookdetail = ({ params }: any) => {
                 <TiArrowDownThick size={18} />
               </div>
             </div>
-            <div className="flex flex-wrap md:flex-col justify-center items-center  ">
+            <div className="flex flex-wrap md:flex-col justify-center items-center">
               {relatedBook?.slice(-3).map((item) => (
                 <div
                   key={item.id}
@@ -120,7 +116,7 @@ const bookdetail = ({ params }: any) => {
               <div className=" animate-pulse">
                 <AiOutlineHome />
               </div>
-              <span onClick={() => router.push("/")}>Home Page</span>
+              <span onClick={() => router.push("/")}>Back to Home Page</span>
             </div>
           </div>
         </div>
