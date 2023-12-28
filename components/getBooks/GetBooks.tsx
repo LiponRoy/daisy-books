@@ -27,7 +27,7 @@ const GetBooks = () => {
   const { data, isFetching, isLoading, isSuccess } = useGetBooksQuery();
   //for react-paginate
   const [pageNumber, setPageNumber] = useState(0);
-  const usersPerPage = 8;
+  const usersPerPage = 16;
   const pagesVisited = pageNumber * usersPerPage;
   const pageCount = Math.ceil(filteredBook.length / usersPerPage);
 
