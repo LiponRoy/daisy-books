@@ -10,6 +10,7 @@ import { RiDeleteBin6Line } from "react-icons/ri";
 import { FaSquarePlus } from "react-icons/fa6";
 import { FaSquareMinus } from "react-icons/fa6";
 import { useRouter } from "next/navigation";
+import { RiEmotionSadLine } from "react-icons/ri";
 
 const page = () => {
   const router = useRouter()
@@ -70,7 +71,7 @@ const page = () => {
       <ClientOnly>
         <div className="mt-24 container ">
           <div className=" grid grid-cols-1 md:grid-cols-6 ">
-            <div className=" col-span-4 mx-8 my-1">
+            {totalQuantity!==0?<div className=" col-span-4 mx-8 my-1">
               {cartProducts &&
                 cartProducts.map((item) => (
                   <div className=" flex justify-between items-center p-1 my-2 bg-off_white border border-light_green rounded-md shadow">
@@ -117,7 +118,15 @@ const page = () => {
                     </div>
                   </div>
                 ))}
-            </div>
+            </div>:<div className="col-span-4 mx-8 my-1 flex-center">
+              <div className="flex-col-center gap-4">
+              <div className=" text-slate-600">
+              <RiEmotionSadLine size="180"/>
+              </div>
+                <span className=" text-2xl text-slate-600">YOUR CART IS EMPTY !</span>
+                <span className=" text-base text-slate-600">Looks like you haven't made order yet. <span className=" text-light_green underline cursor-pointer" onClick={()=> router.push("/")}>Continue to Shopping</span></span>
+              </div>
+              </div>}
             <div className=" col-span-2">
               <div className=" relative flex flex-col justify-start items-center bg-off_white border border-light_green rounded-md shadow mx-8 my-3 gap-y-3 mt-3 p-4 ">
                 <span className="text-slate-600 text-start px-4 uppercase font-semibold text-xl mb-6 w-full">

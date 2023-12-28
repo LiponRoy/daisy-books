@@ -10,6 +10,8 @@ import PostBookModal from '@/components/modals/PostBookModal';
 import ReduxProvider from '@/provider/ReduxProvider';
 import BookDetailModal from '@/components/modals/BookDetailModal';
 import ClientOnly from '@/components/ClientOnly';
+// Import Swiper styles
+import 'swiper/css';
 
 const inter = Inter({ subsets: ['latin'] })
 const roboto = Roboto({ subsets: ['latin'], weight: ["100", '300', '400', '500'] })

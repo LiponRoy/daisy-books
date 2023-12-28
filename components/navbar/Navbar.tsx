@@ -15,6 +15,7 @@ import { useRouter } from "next/navigation";
 import useCartStore from "@/hooks/useCartStore";
 
 
+
 interface navbarProps {
   currentUser?: SafeUser | null;
 }
@@ -35,22 +36,22 @@ const Navbar = ({ currentUser }: navbarProps) => {
 
   return (
     <>
-    <div className=" fixed z-50 w-full bg-light_green shadow-[0_3px_10px_rgb(0,0,0,0.2)]">
+    <div className=" fixed z-50 w-full bg-gradient-to-b from-slate-50 to-slate-100 shadow-[0_3px_10px_rgb(0,0,0,0.2)]">
       <div className="flex-between bg-off-white border-b-2 border-light_green px-8 md:px-20">
         <Logo />
 
         <div className="hidden md:flex justify-between items-center">
           <div
             onClick={() => router.push("/cart_detail")}
-            className=" pr-4 text-white"
+            className=" pr-8 text-light_green "
           >
-            <div className="flex justify-center items-center gap-x-1 cursor-pointer">
-              <span>{cartProducts.length}</span>
-              <BsFillCartDashFill size={24} />
+            <div className="flex justify-center items-center gap-x-1 cursor-pointer ">
+              <span className=" text-xl text-slate-500">{cartProducts.length}</span>
+              <BsFillCartDashFill size={28} />
             </div>
           </div>
           {navLink.map((nav) => (
-            <div key={nav.id} className=" m-1 uppercase text-white">
+            <div key={nav.id} className=" m-1 uppercase text-light_green">
               <Link href={nav.url}>{nav.title}</Link>
             </div>
           ))}
@@ -59,17 +60,17 @@ const Navbar = ({ currentUser }: navbarProps) => {
             {currentUser ? (
               <div className=" mx-2 flex justify-center items-center gap-x-2">
 
-                <div onClick={postBookModalStore.onOpen} className=" border border-white rounded-md p-2 text-white cursor-pointer mx-2"> 
+                <div onClick={postBookModalStore.onOpen} className=" border border-slate-500 rounded-md p-2 text-light_green cursor-pointer mx-2"> 
                   <span>PostBook</span>
                 </div>
-                <div onClick={() => signOut()} className=" border border-white rounded-md p-2 text-white cursor-pointer mx-2"> 
+                <div onClick={() => signOut()} className=" border border-slate-500 rounded-md p-2 text-light_green cursor-pointer mx-2"> 
                   <span>LogOut</span>
                 </div>
                
               </div>
             ) : (
 
-              <div onClick={LoginModalStore.onOpen} className=" border border-white rounded-md p-2 text-white cursor-pointer mx-2"> 
+              <div onClick={LoginModalStore.onOpen} className=" border border-slate-500 rounded-md p-2 text-light_green cursor-pointer mx-2"> 
                   <span>LOGIN</span>
                 </div>
             )}
@@ -83,7 +84,7 @@ const Navbar = ({ currentUser }: navbarProps) => {
 
         <div
             onClick={() => router.push("/cart_detail")}
-            className=" pr-4 text-white"
+            className=" pr-4 text-light_green "
           >
             <div className="flex justify-center items-center gap-x-1  cursor-pointer">
               <span>{cartProducts.length}</span>
@@ -99,7 +100,7 @@ const Navbar = ({ currentUser }: navbarProps) => {
           <div className="md:hidden flex-center z-50">
             <div>
 
-              <div onClick={toggleState} className="cursor-pointer text-white">
+              <div onClick={toggleState} className="cursor-pointer text-light_green">
                 {!toggle && <FiMenu size={24} />}
               </div>
               {toggle && (
@@ -111,13 +112,13 @@ const Navbar = ({ currentUser }: navbarProps) => {
                   }`}
                 >
 
-                  <div  onClick={toggleState} className="absolute -top-7 -left-7 text-white cursor-pointer rounded-full border-4 border-light_green animate-spin hover:animate-none">
+                  <div  onClick={toggleState} className="absolute -top-7 -left-7 text-light_green cursor-pointer rounded-full border-4 border-slate-500 animate-spin hover:animate-none">
             <RxCrossCircled size={28}/>
           </div>
 
 
 
-                  <span className=" text-slate-500 border-b-2 border-light_green text-lg font-semibold mb-4"> Choose Path</span>
+                  <span className=" text-slate-500 border-b-2 border-slate-500 text-lg font-semibold mb-4"> Choose Path</span>
 
                   <div className=" gap-x-2">
 

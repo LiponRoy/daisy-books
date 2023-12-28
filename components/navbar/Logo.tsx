@@ -6,21 +6,10 @@ const Logo = () => {
     const router = useRouter()
     return (
         <>
-            <div onClick={() => router.push("/")} className="cursor-pointer p-1">
-                {/* <div className=' text-lg text-white font-bold uppercase'>Daisy <span className=' text-4xl'>B</span>ooks</div>
-                <div className=' text-white'>Online Book Store</div> */}
+            <div onClick={() => router.push("/")} className=" rounded-md cursor-pointer">
+                <div className=' text-lg text-light_green font-bold uppercase '>Daisy<span className=' text-4xl ml-2'>B</span>ooks</div>
+                <div className=' text-slate-500 shadow-lg'>Online Book Store</div>
                
-
-                <Image
-                    className='w-28 h-12 md:w-48 md:h-20'
-                    src='/logo.png'
-                    alt='logo'
-                    width={600}
-                    height={600}
-                // style={{ objectFit: 'cover' }}
-                // fill
-
-                />
             </div> 
         </>
     )
