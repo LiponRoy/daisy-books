@@ -36,179 +36,177 @@ const Navbar = ({ currentUser }: navbarProps) => {
 
   return (
     <>
-    <div className=" fixed z-50 w-full bg-gradient-to-b from-slate-50 to-slate-100 shadow-[0_3px_10px_rgb(0,0,0,0.2)]">
-      <div className="flex-between bg-off-white border-b-2 border-light_green px-8 md:px-20">
-        <Logo />
+      <div className=" fixed z-50 w-full bg-gradient-to-b from-slate-50 to-slate-100 shadow-[0_3px_10px_rgb(0,0,0,0.2)]">
+        <div className="flex-between bg-off-white border-b-2 border-light_green px-8 md:px-20">
+          <Logo />
 
-        <div className="hidden md:flex justify-between items-center">
-          <div
-            onClick={() => router.push("/cart_detail")}
-            className=" pr-8 text-light_green "
-          >
-            <div className="flex justify-center items-center gap-x-1 cursor-pointer ">
-              <span className=" text-xl text-slate-500">{cartProducts.length}</span>
-              <BsFillCartDashFill size={28} />
-            </div>
-          </div>
-          {navLink.map((nav) => (
-            <div key={nav.id} className=" m-1 uppercase text-light_green">
-              <Link href={nav.url}>{nav.title}</Link>
-            </div>
-          ))}
-
-          <div className=" gap-x-2">
-            {currentUser ? (
-              <div className=" mx-2 flex justify-center items-center gap-x-2">
-
-                <div onClick={postBookModalStore.onOpen} className=" border border-slate-500 rounded-md p-2 text-light_green cursor-pointer mx-2"> 
-                  <span>PostBook</span>
-                </div>
-                <div onClick={() => signOut()} className=" border border-slate-500 rounded-md p-2 text-light_green cursor-pointer mx-2"> 
-                  <span>LogOut</span>
-                </div>
-               
+          <div className="hidden md:flex justify-between items-center">
+            <div
+              onClick={() => router.push("/cart_detail")}
+              className=" pr-8 text-light_green "
+            >
+              <div className="flex justify-center items-center gap-x-1 cursor-pointer ">
+                <span className=" text-xl text-slate-500">{cartProducts.length}</span>
+                <BsFillCartDashFill size={28} />
               </div>
-            ) : (
-
-              <div onClick={LoginModalStore.onOpen} className=" border border-slate-500 rounded-md p-2 text-light_green cursor-pointer mx-2"> 
-                  <span>LOGIN</span>
-                </div>
-            )}
-          </div>
-        </div>
-
-        {/* mobile part */}
-        <div className=" md:hidden">
-
-          <div className=" flex justify-center items-center gap-1">
-
-        <div
-            onClick={() => router.push("/cart_detail")}
-            className=" pr-4 text-light_green "
-          >
-            <div className="flex justify-center items-center gap-x-1  cursor-pointer">
-              <span>{cartProducts.length}</span>
-              <BsFillCartDashFill size={24} />
             </div>
-          </div>
-        
-        <div
-          className={`${
-            toggle && " fixed inset-0 bg-black/70 full-page-center z-40"
-          }`}
-        >
-          <div className="md:hidden flex-center z-50">
-            <div>
-
-              <div onClick={toggleState} className="cursor-pointer text-light_green">
-                {!toggle && <FiMenu size={24} />}
+            {navLink.map((nav) => (
+              <div key={nav.id} className=" m-1 uppercase text-light_green">
+                <Link href={nav.url}>{nav.title}</Link>
               </div>
-              {toggle && (
-                <div
-                  className={`${
-                    toggle
-                      ? " absolute top-28 bottom-80 right-0 flex-col-center bg-slate-200 p-8 rounded-md opacity-100 border-2"
-                      : " hidden opacity-0"
-                  }`}
-                >
+            ))}
 
-                  <div  onClick={toggleState} className="absolute -top-7 -left-7 text-light_green cursor-pointer rounded-full border-4 border-slate-500 animate-spin hover:animate-none">
-            <RxCrossCircled size={28}/>
-          </div>
+            <div className=" gap-x-2">
+              {currentUser ? (
+                <div className=" mx-2 flex justify-center items-center gap-x-2">
 
-
-
-                  <span className=" text-slate-500 border-b-2 border-slate-500 text-lg font-semibold mb-4"> Choose Path</span>
-
-                  <div className=" gap-x-2">
-
-
-                    {currentUser ? (
-                      <div className="flex-col-center gap-y-4 text-slate-600">
-                        
-                        <span
-                          className=" cursor-pointer flex-center"
-                          onClick={() => {
-                            router.push("/");
-                            setToggle(false);
-                          }}
-                        >
-                          Home 
-                          
-                          
-                        </span>
-                        <span
-                          className=" cursor-pointer"
-                          onClick={() => {
-                            postBookModalStore.onOpen();
-                            setToggle(false);
-                          }}
-                        >
-                          PostBook
-                        </span>
-                        <span
-                          className=" cursor-pointer"
-                          onClick={() => {
-                            router.push("/cart_detail");
-                            setToggle(false);
-                          }}
-                        >
-                          Cart Detail
-                        </span>
-
-                        <span
-                          className=" cursor-pointer"
-                          onClick={() => {
-                            signOut();
-                            setToggle(false);
-                          }}
-                        >
-                          LogOut
-                        </span>
-                      </div>
-                    ) : (
-                      <div className="flex-col-center gap-y-4 text-slate-600">
-                        <span
-                          className=" cursor-pointer"
-                          onClick={() => {
-                            router.push("/");
-                            setToggle(false);
-                          }}
-                        >
-                          Home
-                        </span>
-                        <span
-                          className=" cursor-pointer"
-                          onClick={() => {
-                            LoginModalStore.onOpen();
-                            setToggle(false);
-                          }}
-                        >
-                          LOGIN
-                        </span>
-                        <span
-                          className=" cursor-pointer"
-                          onClick={() => {
-                            router.push("/cart_detail");
-                            setToggle(false);
-                          }}
-                        >
-                          Cart Detail
-                        </span>
-                      </div>
-                    )}
+                  <div onClick={postBookModalStore.onOpen} className=" border border-slate-500 rounded-md p-2 text-light_green cursor-pointer mx-2">
+                    <span>PostBook</span>
                   </div>
-              <div className="bg-light_green w-full h-2 absolute left-0 right-0 bottom-0 rounded-md"></div>
+                  <div onClick={() => signOut()} className=" border border-slate-500 rounded-md p-2 text-light_green cursor-pointer mx-2">
+                    <span>LogOut</span>
+                  </div>
 
+                </div>
+              ) : (
+
+                <div onClick={LoginModalStore.onOpen} className=" border border-slate-500 rounded-md p-2 text-light_green cursor-pointer mx-2">
+                  <span>LOGIN</span>
                 </div>
               )}
             </div>
-            
+          </div>
+
+          {/* mobile part */}
+          <div className=" md:hidden">
+
+            <div className=" flex justify-center items-center gap-1">
+
+              <div
+                onClick={() => router.push("/cart_detail")}
+                className=" pr-4 text-light_green "
+              >
+                <div className="flex justify-center items-center gap-x-1  cursor-pointer">
+                  <span>{cartProducts.length}</span>
+                  <BsFillCartDashFill size={24} />
+                </div>
+              </div>
+
+              <div
+                className={`${toggle && " fixed inset-0 bg-black/70 full-page-center z-40"
+                  }`}
+              >
+                <div className="md:hidden flex-center z-50">
+                  <div>
+
+                    <div onClick={toggleState} className="cursor-pointer text-light_green">
+                      {!toggle && <FiMenu size={24} />}
+                    </div>
+                    {toggle && (
+                      <div
+                        className={`${toggle
+                            ? " absolute top-28 bottom-80 right-0 flex-col-center bg-slate-200 p-8 rounded-md opacity-100 border-2"
+                            : " hidden opacity-0"
+                          }`}
+                      >
+
+                        <div onClick={toggleState} className="absolute -top-7 -left-7 text-light_green cursor-pointer rounded-full border-4 border-slate-500 animate-spin hover:animate-none">
+                          <RxCrossCircled size={28} />
+                        </div>
+
+
+
+                        <span className=" text-slate-500 border-b-2 border-slate-500 text-lg font-semibold mb-4"> Choose Path</span>
+
+                        <div className=" gap-x-2">
+
+
+                          {currentUser ? (
+                            <div className="flex-col-center gap-y-4 text-slate-600">
+
+                              <span
+                                className=" cursor-pointer flex-center"
+                                onClick={() => {
+                                  router.push("/");
+                                  setToggle(false);
+                                }}
+                              >
+                                Home
+
+
+                              </span>
+                              <span
+                                className=" cursor-pointer"
+                                onClick={() => {
+                                  postBookModalStore.onOpen();
+                                  setToggle(false);
+                                }}
+                              >
+                                PostBook
+                              </span>
+                              <span
+                                className=" cursor-pointer"
+                                onClick={() => {
+                                  router.push("/cart_detail");
+                                  setToggle(false);
+                                }}
+                              >
+                                Cart Detail
+                              </span>
+
+                              <span
+                                className=" cursor-pointer"
+                                onClick={() => {
+                                  signOut();
+                                  setToggle(false);
+                                }}
+                              >
+                                LogOut
+                              </span>
+                            </div>
+                          ) : (
+                            <div className="flex-col-center gap-y-4 text-slate-600">
+                              <span
+                                className=" cursor-pointer"
+                                onClick={() => {
+                                  router.push("/");
+                                  setToggle(false);
+                                }}
+                              >
+                                Home
+                              </span>
+                              <span
+                                className=" cursor-pointer"
+                                onClick={() => {
+                                  LoginModalStore.onOpen();
+                                  setToggle(false);
+                                }}
+                              >
+                                LOGIN
+                              </span>
+                              <span
+                                className=" cursor-pointer"
+                                onClick={() => {
+                                  router.push("/cart_detail");
+                                  setToggle(false);
+                                }}
+                              >
+                                Cart Detail
+                              </span>
+                            </div>
+                          )}
+                        </div>
+                        <div className="bg-light_green w-full h-2 absolute left-0 right-0 bottom-0 rounded-md"></div>
+
+                      </div>
+                    )}
+                  </div>
+
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-        </div>
-        </div>
-      </div>
       </div>
     </>
   );
