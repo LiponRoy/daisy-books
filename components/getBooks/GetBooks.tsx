@@ -48,7 +48,7 @@ const GetBooks = () => {
       {/* book wrapper */}
       <div className="grid grid-cols-4 gap-6 pt-4 pb-16">
         {/* sideBar */}
-        <div className="hidden md:flex  col-span-1 px-4 bp-6 shadow rounded  overflow-hidden">
+        <div className="hidden md:flex  col-span-1 px-4 bp-6  overflow-hidden">
           <BookFilter />
         </div>
 
@@ -129,23 +129,22 @@ const GetBooks = () => {
         <div
 
 
-          className={`${
-            LeftSidebar.isOpen && "fixed inset-0 bg-black/70 full-page-center z-40"
-          }`}
-        >
-        <div
-          className={`${LeftSidebar.isOpen ? "sidebarContainer" : "sidebarContainer-Hidden"
-
+          className={`${LeftSidebar.isOpen && "fixed inset-0 bg-black/70 full-page-center z-40"
             }`}
         >
+          <div
+            className={`${LeftSidebar.isOpen ? "sidebarContainer" : "sidebarContainer-Hidden"
 
-         
-          <div onClick={LeftSidebar.onClose} className="absolute -top-7 -right-7 text-white cursor-pointer rounded-full border-4 border-light_green animate-spin hover:animate-none">
-            <RxCrossCircled size={28}/>
+              }`}
+          >
+
+
+            <div onClick={LeftSidebar.onClose} className="absolute -top-7 -right-7 text-white cursor-pointer rounded-full border-4 border-light_green animate-spin hover:animate-none">
+              <RxCrossCircled size={28} />
+            </div>
+            <BookFilter />
+
           </div>
-          <BookFilter />
-
-        </div>
         </div>
         {/* End mobile sidebar for filter item */}
 
