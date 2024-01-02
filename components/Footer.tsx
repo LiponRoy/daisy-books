@@ -53,7 +53,7 @@ const Footer = () => {
                 <div className="flex justify-start md:justify-center items-center">
 
                     <div className="flex flex-col justify-center items-start">
-                        <span className=' text-lg font-medium uppercase '>Shopping Guid</span>
+                        <span className=' text-lg font-medium uppercase '>Shopping Guide</span>
                         {shopping_guids.map((val) => (
                             <div className=" my-2 cursor-pointer ">
                                 <div className=" flex justify-center items-center gap-1">
