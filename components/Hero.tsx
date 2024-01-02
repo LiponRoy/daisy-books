@@ -14,8 +14,8 @@ const Hero = () => {
 
             <div className="basis-[40%] h-full flex-center">
                 <Image
-                    className='w-28 h-32 md:h-[95%] md:w-[70%] '
-                    src='/girl.png'
+                    className='w-28 h-32 md:h-[100%] md:w-[80%] '
+                    src='/books.png'
                     alt='logo'
                     width={400}
                     height={400}

@@ -115,7 +115,7 @@ const BookFilter = () => {
           </div>
           <p className="text-slate-500 ">{price}</p>
           <input
-            className="range pr-6 accent-light_green"
+            className="pr-6 accent-light_green"
             type="range"
             value={price}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPrice(Number(e.target.value))}

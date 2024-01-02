@@ -47,7 +47,9 @@ const page = () => {
     //   console.log(error);
     // }
 
-
+// const goCart=()=>{
+//   router.push("/cart_detail");
+// }
 
   };
 
@@ -138,6 +140,7 @@ const page = () => {
               type="submit"
             />
           </form>
+          <span onClick={()=>router.push("/cart_detail")} className='text-base text-slate-500 mt-2 underline cursor-pointer'>Go to cart page</span>
         </div>
 
 
