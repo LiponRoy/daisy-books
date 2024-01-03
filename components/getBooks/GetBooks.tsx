@@ -112,16 +112,16 @@ const GetBooks = () => {
             )}
           </div>
           <ReactPaginate
-            className=" flex justify-center items-center mt-6  "
+            className="top-paginate-class"
             previousLabel={"Prev"}
             nextLabel={"Next"}
             pageCount={pageCount}
             onPageChange={changePage}
-            previousLinkClassName={" p-1 rounded mx-2 text-lg text-slate-500 font-semibold"}
-            nextLinkClassName={" p-1 rounded mx-2 text-lg text-slate-500 font-semibold"}
-            disabledClassName={"m-1 text-red-600 "}
-            pageLinkClassName={"m-1 text-xl  px-2"}
-            activeClassName={"mx-1 text-light_green text-xl font-semibold border-2 border-light_green rounded-md"}
+            previousLinkClassName={"previousLink"}
+            nextLinkClassName={"nextLink"}
+            disabledClassName={"disabledClass"}
+            pageLinkClassName={"pageLinkClass"}
+            activeClassName={"activeClass"}
           />
         </div>
         {/* mobile sidebar for filter item */}

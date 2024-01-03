@@ -58,3 +58,25 @@
 }
 
 /* END: Navbar styles */
+
+
+/* START: Pagination styles */
+
+.top-paginate-class {
+	@apply flex justify-center items-center mt-6;
+}
+.previousLink {
+	@apply p-1 rounded mx-2 text-lg text-slate-500 font-semibold;
+}
+.nextLink {
+	@apply p-1 rounded mx-2 text-lg text-slate-500 font-semibold;
+}
+.disabledClass {
+	@apply m-1 text-red-600;
+}
+.pageLinkClass {
+	@apply m-1 text-xl  px-2;
+}
+.activeClass {
+	@apply mx-1 text-light_green text-xl font-semibold border-2 border-light_green rounded-md;
+}
