@@ -96,7 +96,7 @@ const PostBookModal = () => {
   };
 
   const body = (
-    <div className="container mx-auto max-w-md  overflow-scroll py-10 px-10 md:px-0">
+    <div className="container mx-auto max-w-md py-10 px-5 md:px-10">
       <span className=" mb-20 font-semibold text-lg text-slate-500">
         Upload Product
       </span>
