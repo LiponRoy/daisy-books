@@ -53,7 +53,7 @@ const PostBookModal = () => {
 
   const onSubmit = async (data: any) => {
 
-    console.log("data...",data)
+    console.log("data...", data)
 
     setBtnDisabled(true);
     // Getting image file from input
@@ -195,10 +195,10 @@ const PostBookModal = () => {
           >
             <option value="">Select Category</option>
             <option value="children">children</option>
-                <option value="Novel">Novel</option>
-                <option value="Biography">Biography</option>
-                <option value="Horror">Horror</option>
-                <option value="Thriller">Thriller</option>
+            <option value="Novel">Novel</option>
+            <option value="Biography">Biography</option>
+            <option value="Horror">Horror</option>
+            <option value="Thriller">Thriller</option>
             <option value="other">other</option>
           </select>
         </div>
@@ -231,7 +231,7 @@ const PostBookModal = () => {
         </div>
 
         <CustomButton
-        disabled={btnDisabled}
+          disabled={btnDisabled}
           label={btnDisabled ? "Posting..." : "SUBMIT"}
           type="submit"
         />

@@ -25,16 +25,23 @@ const GetBooks = () => {
 
   const { FILTER_BY_SEARCH, filteredBook } = useSearchFilter();
   const { data, isFetching, isLoading, isSuccess } = useGetBooksQuery();
-  //for react-paginate
-  const [pageNumber, setPageNumber] = useState(0);
-  const usersPerPage = 16;
-  const pagesVisited = pageNumber * usersPerPage;
-  const pageCount = Math.ceil(filteredBook.length / usersPerPage);
 
-  const changePage = ({ selected }: any) => {
-    setPageNumber(selected);
-  };
-  //end for react-paginate
+  //for pagination
+  const itemPerPage = 12;
+  const numberOfPages = Math.ceil(filteredBook.length / itemPerPage);
+  const pageIndex = Array.from({ length: numberOfPages }, (_, idx) => idx + 1);
+  const [currentPage, setCurrentPage] = useState(0);
+
+  const rows = filteredBook?.slice(
+    currentPage * itemPerPage,
+    (currentPage + 1) * itemPerPage
+  )
+
+  const handlePageChange = (pageNumber: any) => {
+    setCurrentPage(pageNumber)
+
+  }
+  //end for pagination
 
   // for search item
   const [searchProduct, setSearchProduct] = useState("");
@@ -46,9 +53,9 @@ const GetBooks = () => {
   return (
     <>
       {/* book wrapper */}
-      <div className="grid grid-cols-4 gap-6 pt-4 pb-16">
+      <div className="grid grid-cols-4 gap-6 pt-4 pb-16 ">
         {/* sideBar */}
-        <div className="hidden md:flex  col-span-1 px-4 bp-6  overflow-hidden">
+        <div className="hidden md:flex  col-span-1 px-4 bp-6  overflow-hidden border ">
           <BookFilter />
         </div>
 
@@ -61,7 +68,7 @@ const GetBooks = () => {
                 {filteredBook.length === 0 ? (
                   <span className=" text-red-700">No Item Found</span>
                 ) : (
-                  <div className="">
+                  <div className=" ">
                     <span className="hidden md:flex justify-center items-center text-slate-500 text-md font-medium">
                       {`${filteredBook.length}`}- Item <span className="flex">Found</span>
                     </span>
@@ -77,9 +84,9 @@ const GetBooks = () => {
 
             {/* right-Side */}
 
-            <div className=" flex-center">
+            <div className=" flex-center ">
               {/* list and grid view buttons */}
-              <div className="hidden md:flex justify-center items-center  text-slate-500  gap-x-2 mr-4">
+              <div className="hidden md:flex justify-center items-center  text-slate-500  gap-x-2 mr-4 ">
                 <span className=" text-slate-500">View</span>
                 <div onClick={GridOrListView.onTrue} className={` cursor-pointer ${GridOrListView.isListView && "text-light_green border-2 border-slate-200 p-1 rounded-md"}`}>
                   <FaList size={28} />
@@ -106,23 +113,31 @@ const GetBooks = () => {
               <div className=" text-2xl font-medium">Loading...</div>
             ) : (
               filteredBook &&
-              filteredBook
-                .slice(pagesVisited, pagesVisited + usersPerPage)
+              rows
                 .map((book) => <GetBook key={book.id} book={book} />)
             )}
           </div>
-          <ReactPaginate
-            className="top-paginate-class"
-            previousLabel={"Prev"}
-            nextLabel={"Next"}
-            pageCount={pageCount}
-            onPageChange={changePage}
-            previousLinkClassName={"previousLink"}
-            nextLinkClassName={"nextLink"}
-            disabledClassName={"disabledClass"}
-            pageLinkClassName={"pageLinkClass"}
-            activeClassName={"activeClass"}
-          />
+
+          {/* pagination Buttons */}
+          <div className=" mt-6 flex-center">
+            <button disabled={currentPage < 1} onClick={() => handlePageChange(currentPage - 1)} className='mr-2 text-white bg-slate-500 px-2 text-2xl rounded-md'>
+              &lt;
+            </button>
+            {pageIndex
+              .slice(
+                Math.max(0, currentPage - 2),
+                Math.min(numberOfPages, currentPage + 3)
+              ).map((page) => (
+                <button key={page} onClick={() => handlePageChange(page - 1)}
+                  className={page === currentPage + 1 ? " text-white bg-light_green px-2 text-2xl border rounded-md border-slate-300 m-1" : "text-white bg-slate-500 px-2 text-2xl rounded-md m-1"}>{page}</button>
+              ))}
+            <button disabled={currentPage >= numberOfPages - 1} onClick={() => handlePageChange(currentPage + 1)} className='ml-2 text-white bg-slate-500 px-2 text-2xl rounded-md'>
+              &gt;
+            </button>
+
+          </div>
+          {/* End pagination Buttons */}
+
         </div>
         {/* mobile sidebar for filter item */}
 
