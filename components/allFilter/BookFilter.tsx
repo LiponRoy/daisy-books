@@ -24,6 +24,7 @@ const BookFilter = () => {
   const filterProduct = (cat: string) => {
     setCategory(cat);
     data !== undefined && FILTER_BY_CATEGORY(data, cat);
+
   };
 
   useEffect(() => {
@@ -47,7 +48,7 @@ const BookFilter = () => {
 
   return (
 
-    <div className="">
+    <div className=" mt-6">
       <div className="w-full pl-8 pt-4 gap-6 z-50">
         {/* Category Filter*/}
         <div className="flex flex-col justify-center items-start">

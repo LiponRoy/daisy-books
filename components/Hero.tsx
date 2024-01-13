@@ -14,7 +14,7 @@ const Hero = () => {
 
             <div className="basis-[40%] h-full flex-center">
                 <Image
-                    className='w-28 h-32 md:h-[100%] md:w-[80%] '
+                    className='w-40 h-44 md:h-[100%] md:w-[80%] '
                     src='/books.png'
                     alt='logo'
                     width={400}
@@ -26,21 +26,21 @@ const Hero = () => {
             </div>
 
             <div className="basis-[40%]  flex flex-col justify-center items-center h-full w-full ">
-           <div className="flex-center">
-           <span className='text-4xl md:text-7xl font-bold text-light_green'>Find Out ...  </span> 
-           <div className="hidden md:flex text-slate-600">
-           <IoBookOutline size="65"/>
-           </div>
-           </div>
-                <span className='text-2xl md:text-5xl font-bold text-light_green my-4'>Your Favorite Book</span> 
+                <div className="flex-center">
+                    <span className='text-4xl md:text-7xl font-bold text-light_green'>Find Out ...  </span>
+                    <div className="hidden md:flex text-slate-600">
+                        <IoBookOutline size="65" />
+                    </div>
+                </div>
+                <span className='text-2xl md:text-5xl font-bold text-light_green my-4'>Your Favorite Book</span>
                 <div className=" hidden md:flex  md:flex-col justify-center items-center">
-                <div className="my-4">
-                    <p className='text-base md:text-2xl font-medium text-slate-600'>Special <span className=' text-5xl font-medium text-light_green '>50%</span > Off For Our Student Community</p>
-                </div>
-                <div className=" flex-col-start text-slate-600">
-                    <span>"Books are the plane, and the train, and the road. They are </span>
-                    <span>the destination, and the journey. They are home"</span>
-                </div>
+                    <div className="my-4">
+                        <p className='text-base md:text-2xl font-medium text-slate-600'>Special <span className=' text-5xl font-medium text-light_green '>50%</span > Off For Our Student Community</p>
+                    </div>
+                    <div className=" flex-col-start text-slate-600">
+                        <span>"Books are the plane, and the train, and the road. They are </span>
+                        <span>the destination, and the journey. They are home"</span>
+                    </div>
                 </div>
 
 
