@@ -10,6 +10,8 @@ import Modal from "./Modal";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import { bookFilter } from "@/constants";
+
 
 
 const schema = yup
@@ -28,6 +30,7 @@ const schema = yup
   .required();
 
 const PostBookModal = () => {
+
   const postBookModalStore = usePostBookModalStore();
   const [createBook, { isLoading, isSuccess, isError }] =
     useCreateBookMutation();
@@ -93,6 +96,7 @@ const PostBookModal = () => {
       console.log("Book upload failed");
       setBtnDisabled(false);
     }
+
   };
 
   const body = (
@@ -188,18 +192,18 @@ const PostBookModal = () => {
               {errors.category && <span>Required Filed</span>}
             </p>
           </div>
-          {/* <input className='inputStyle' {...register("category")} /> */}
+
           <select
             className="w-full border border-slate-600 rounded-md p-2"
             {...register("category")}
           >
             <option value="">Select Category</option>
-            <option value="children">children</option>
-            <option value="Novel">Novel</option>
-            <option value="Biography">Biography</option>
-            <option value="Horror">Horror</option>
-            <option value="Thriller">Thriller</option>
-            <option value="other">other</option>
+            {
+              bookFilter.map((value) => (
+                <option key={value.id} value={value.titles}>{value.titles}</option>
+              ))
+            }
+
           </select>
         </div>
         <div className="flex-col-start gap-y-2 w-full my-2">
