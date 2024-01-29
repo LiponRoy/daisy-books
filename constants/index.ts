@@ -16,23 +16,27 @@ interface Ioptions {
 export const bookFilter: Ioptions[] = [
 	{
 		id: 1,
-		titles: 'children',
-	},
-	{
-		id: 2,
 		titles: 'Novel',
 	},
 	{
+		id: 2,
+		titles: 'Story',
+	},
+	{
 		id: 3,
-		titles: 'Biography',
+		titles: 'Children',
 	},
 	{
 		id: 4,
-		titles: 'Horror',
+		titles: 'Education',
 	},
 	{
 		id: 5,
-		titles: 'Thriller',
+		titles: 'Islamic',
+	},
+	{
+		id: 5,
+		titles: 'Motivetion',
 	},
 ];
 
