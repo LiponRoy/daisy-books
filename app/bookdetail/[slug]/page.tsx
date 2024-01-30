@@ -30,17 +30,17 @@ const bookdetail = ({ params }: any) => {
       {isFetching ? (
         <span>Loading...</span>
       ) : (
-        <div className=" flex flex-col md:flex-row justify-center items-center  w-full ">
+        <div className=" flex flex-col md:flex-row justify-between items-center  w-[80%] m-28 ">
           {/* left side ( book detail ) */}
-          <div className=" px-4 md:mr-14">
-            <div className=" flex justify-center items-center gap-x-8 md:gap-x-14">
+          <div className=" px-4 md:mr-2">
+            <div className=" flex justify-center items-center gap-x-8 md:gap-x-8">
               <Image
                 src={data?.imageSrc || "/girl.png"}
                 width={500}
                 height={500}
                 alt="no image found"
                 className=" w-[150px] h-[200px] md:w-[400px] md:h-[500px] object-contain shadow mb-4 transform transition duration-500 
-                hover:scale-110"
+                hover:scale-110 border-2 border-slate-500"
               />
               <div className=" flex flex-col justify-center items-start w-full gap-y-2 text-slate-600">
                 <span className=" text-xl md:text-2xl font-medium my-1">
@@ -67,7 +67,7 @@ const bookdetail = ({ params }: any) => {
                   <span className="font-medium mr-2">Date :</span>
                   {data?.publicationDate}
                 </span>
-                <span className="hidden md:block  text-md md:text-lg ">
+                <span className="hidden md:block  text-md md:text-lg w-[80%] ">
                   <span className="font-medium mr-2">Description :</span>
                   {data?.description}
                 </span>
@@ -77,9 +77,10 @@ const bookdetail = ({ params }: any) => {
                   <span className=" text-light_green">In Stock</span>
                 </span>
 
-               <div className=" mr-1">
-               <CustomButton onClick={() => data && addItemToCart(data)} label="Add To Cart" outline/>
-               </div>
+                <div className=" mr-1">
+                  <span className=" p-1 md:p-2 mt-2 border-2 bg-light_green text-white border-slate-600 rounded-md cursor-pointer" onClick={() => data && addItemToCart(data)}>Add To Cart</span>
+
+                </div>
               </div>
             </div>
           </div>
@@ -94,7 +95,7 @@ const bookdetail = ({ params }: any) => {
                 <TiArrowDownThick size={18} />
               </div>
             </div>
-            <div className="flex flex-wrap md:flex-col justify-center items-center">
+            <div className="flex flex-row md:flex-col justify-center items-center">
               {relatedBook?.slice(-3).map((item) => (
                 <div
                   key={item.id}
@@ -106,7 +107,7 @@ const bookdetail = ({ params }: any) => {
                     width={200}
                     height={200}
                     alt="no image found"
-                    className=" w-[50px] h-[70px] md:w-[80px] md:h-[100px] object-contain shadow mb-1 "
+                    className=" w-[50px] h-[70px] md:w-[300px] md:h-[100px] object-contain shadow mb-1 "
                   />
                 </div>
               ))}
@@ -114,9 +115,9 @@ const bookdetail = ({ params }: any) => {
             {/* // go back home page */}
             <div className="flex-center gap-x-1 text-sm text-slate-600 hover:text-light_green cursor-pointer w-full mt-4">
               <div className=" animate-pulse">
-                <AiOutlineHome />
+                <AiOutlineHome size={20} />
               </div>
-              <span onClick={() => router.push("/")}>Back to Home Page</span>
+              <span className=" font-semibold text-base " onClick={() => router.push("/")}>Back</span>
             </div>
           </div>
         </div>
