@@ -4,7 +4,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 export const bookApi = createApi({
 	reducerPath: 'bookApi',
 	baseQuery: fetchBaseQuery({
-		baseUrl: 'https://daisy-books.vercel.app',
+		baseUrl: process.env.NEXT_PUBLIC_API_BASE_URL,
 	}),
 	tagTypes: ['book_tag'],
 
