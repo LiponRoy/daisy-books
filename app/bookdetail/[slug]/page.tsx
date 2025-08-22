@@ -9,6 +9,7 @@ import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import useCartStore from "@/hooks/useCartStore";
 import { useRouter } from "next/navigation";
+import BookDetailSkeleton from "@/components/BookDetailSkeleton";
 
 const bookdetail = ({ params }: any) => {
   const { slug } = params;
@@ -27,8 +28,8 @@ const bookdetail = ({ params }: any) => {
 
   return (
     <div className=" h-screen w-full flex flex-col justify-center items-center">
-      {isFetching ? (
-        <span>Loading...</span>
+      {isFetching || isLoading  ? (
+        <BookDetailSkeleton />
       ) : (
         <div className=" flex flex-col md:flex-row justify-between items-center  w-[80%] m-28 ">
           {/* left side ( book detail ) */}

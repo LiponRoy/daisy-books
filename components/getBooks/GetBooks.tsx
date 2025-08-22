@@ -15,6 +15,7 @@ import useBookGridOrListView from "@/hooks/useBookGridOrListView";
 import { BsFilterLeft } from "react-icons/bs";
 import useLeftSidebar from "@/hooks/useLeftSidebar";
 import { RxCrossCircled } from "react-icons/rx";
+import SkeletonGrid from "../SkeletonGrid";
 
 const GetBooks = () => {
   const GridOrListView = useBookGridOrListView();
@@ -64,7 +65,7 @@ const GetBooks = () => {
           <div className=" flex justify-between items-center my-2">
             {/* left-Side */}
             <div className="flex justify-center items-center ">
-              <div className=" mr-4">
+              {!isLoading && <div className=" mr-4">
                 {filteredBook.length === 0 ? (
                   <span className=" text-red-700">No Item Found</span>
                 ) : (
@@ -78,7 +79,7 @@ const GetBooks = () => {
                     </div>
                   </div>
                 )}
-              </div>
+              </div>}
 
             </div>
 
@@ -110,7 +111,8 @@ const GetBooks = () => {
               }`}
           >
             {isLoading ? (
-              <div className=" text-2xl font-medium">Loading...</div>
+              // <div className=" text-2xl font-medium">Loading...xxxxx</div>
+              <SkeletonGrid/>
             ) : (
               filteredBook &&
               rows
